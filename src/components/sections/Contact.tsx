@@ -22,24 +22,47 @@ function Contact() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) {
-      setStatus({ type: "error", message: "Please fill in all fields." });
-      return;
-    }
-    // Simple email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      setStatus({ type: "error", message: "Please enter a valid email address." });
-      return;
-    }
+ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
 
-    setStatus({ type: "success", message: "Message sent successfully! I'll get back to you soon." });
+  if (!formData.name || !formData.email || !formData.message) {
+    setStatus({ type: "error", message: "Please fill in all fields." });
+    return;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(formData.email)) {
+    setStatus({ type: "error", message: "Please enter a valid email address." });
+    return;
+  }
+
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (!res.ok) throw new Error("Failed");
+
+    setStatus({
+      type: "success",
+      message: "Message sent successfully! I'll get back to you soon.",
+    });
+
     setFormData({ name: "", email: "", message: "" });
-    setTimeout(() => setStatus({ type: "", message: "" }), 5000);
-    e.currentTarget.submit();
-  };
+
+  } catch (error) {
+    setStatus({
+      type: "error",
+      message: "Something went wrong. Please try again.",
+    });
+  }
+
+  setTimeout(() => setStatus({ type: "", message: "" }), 5000);
+};
 
  const socialIcons: Record<string, any> = {
    github: Github,
