@@ -1,96 +1,121 @@
 @import "tailwindcss";
 
+/* ============================= */
+/* 🌤 LIGHT MODE (Default) */
+/* ============================= */
+
 :root {
-  --color-background: #ffffff;
-  --color-foreground: #171717;
+  --color-bg: #fff7fb;        /* خلفية وردي فاتح جدًا */
+  --color-secondary: #fdebf3; /* كاردات / عناصر ثانوية */
+  --color-primary: #d16d9e;   /* وردي هادئ رئيسي */
+  --color-accent: #e8a9c4;    /* وردي أفتح للـ hover */
+  --color-text: #3a1f2d;      /* نص داكن مائل للوردي */
+  --color-subtext: #7a5568;   /* نص فرعي ناعم */
+
+  --font-display: "Poppins", sans-serif;
 }
 
-@theme {
-  --font-display: "Poppins", sans-serif;
-  --breakpoint-3xl: 1920px;
-  --color-primary: #8dff69;
+/* ============================= */
+/* 🌙 DARK MODE */
+/* ============================= */
+
+.dark {
+  --color-bg: #1f1720;        
+  --color-secondary: #2a1f2b; 
+  --color-primary: #e38eb5;   
+  --color-accent: #f2b8d1;    
+  --color-text: #f8eaf1;      
+  --color-subtext: #cfa5bb;   
 }
+
+/* ============================= */
 
 @layer base {
   html {
     font-family: var(--font-display);
     scroll-behavior: smooth;
   }
+
   body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background-color: #000;
-    color: #fff;
+    background-color: var(--color-bg);
+    color: var(--color-text);
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 }
 
+/* ============================= */
+/* Scrollbar */
+/* ============================= */
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;  /* IE 10+ */
+  scrollbar-width: none;      /* Firefox */
+}
+
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: var(--color-secondary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #8dff69, #6fe047);
+  background: var(--color-primary);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #a8ff8d, #5bc92e);
+  background: var(--color-accent);
 }
 
-.hide-scrollbar {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-}
-
-.hide-scrollbar::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
-}
+/* ============================= */
+/* Animations */
+/* ============================= */
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes pulse {
- 
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
 
-  
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+  margin-left: 2px;
 }
 
 .animate-fadeIn {
-  animation: fadeIn 0.5s ease-out ;
+  animation: fadeIn 0.5s ease-out;
 }
+
 .animate-pulse {
   animation: pulse 3s ease-in-out infinite;
 }
+
 .animate-spin-slow {
   animation: spin 8s linear infinite;
 }
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-  
-}
+/* ============================= */
 
 .line-clamp-2 {
   display: -webkit-box;

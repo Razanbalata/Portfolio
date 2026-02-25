@@ -13,17 +13,17 @@ type GradientConfig = {
   opacity: number;
 };
 
-const variants = {
+const variants: Record<string, GradientConfig[]> = {
   hero: [
     {
       position: "top-1 left-1 -translate-x-1/2 -translate-y-1/2",
       size: "w-[1400px] h-[1400px]",
       colors: [
-        { color: "rgba(141,255,105,0.25)", stop: "0%" },
-        { color: "rgba(141,255,105,0.5)", stop: "50%" },
-        { color: "rgba(141,255,105,0.25)", stop: "100%" },
+        { color: "rgba(138,154,91,0.25)", stop: "0%" },   // زيتوني فاتح
+        { color: "rgba(207,195,165,0.5)", stop: "50%" },  // بيج متوسط
+        { color: "rgba(138,154,91,0.25)", stop: "100%" },
       ],
-      blur: "0px",
+      blur: "200px",
       opacity: 0.5,
     },
   ],
@@ -32,11 +32,11 @@ const variants = {
       position: "bottom-0 left-[75%]",
       size: "w-[700px] h-[700px]",
       colors: [
-        { color: "rgba(141,255,105,0.25)", stop: "0%" },
-        { color: "rgba(141,255,105,0.5)", stop: "50%" },
-        { color: "rgba(141,255,105,0.25)", stop: "100%" },
+        { color: "rgba(138,154,91,0.25)", stop: "0%" },
+        { color: "rgba(207,195,165,0.5)", stop: "50%" },
+        { color: "rgba(138,154,91,0.25)", stop: "100%" },
       ],
-      blur: "0px",
+      blur: "150px",
       opacity: 0.5,
     },
   ],
@@ -46,27 +46,19 @@ type VariantType = keyof typeof variants | "custom";
 
 interface RadialGradientBackgroundProps {
   variant?: VariantType;
-  gradiants?: GradientConfig[];
+  gradients?: GradientConfig[];
 }
 
-function RadialGradientBackgorund({
+const RadialGradientBackgorund: React.FC<RadialGradientBackgroundProps> = ({
   variant = "hero",
-  gradiants = [],
-}: RadialGradientBackgroundProps) {
+  gradients = [],
+}) => {
   const activeGradients =
-    variant === "custom"
-      ? gradiants
-      : variants[variant] || variants.hero;
+    variant === "custom" ? gradients : variants[variant] || variants.hero;
 
   const generateGradient = (colors: GradientColor[]) => {
-    const colorStops = colors
-      .map(({ color, stop }) => `${color} ${stop}`)
-      .join(", ");
-
-    return `radial-gradient(
-      circle at center,
-      ${colorStops}
-    )`;
+    const colorStops = colors.map(({ color, stop }) => `${color} ${stop}`).join(", ");
+    return `radial-gradient(circle at center, ${colorStops})`;
   };
 
   return (
@@ -84,6 +76,6 @@ function RadialGradientBackgorund({
       ))}
     </div>
   );
-}
+};
 
 export default RadialGradientBackgorund;

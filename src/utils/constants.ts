@@ -2,9 +2,9 @@ export const PERSONAL_INFO = {
     name: "Razan Balata",
     title: "Front End Developer",
     email:  "razanbalata@gmail.com",
-    phone: "+1234567890",
+    phone: "0599920307",
     location: "Palestine, Gaza",
-    resume: "https://drive.google.com/file/d/1Xo9n8sKZl3mLh5v7a8b9c0d1e2f3g4h/view?usp=sharing",
+    resume: "https://drive.google.com/file/d/1Rk6Ka-5mOm9-W1gnm9XQgNfe6WzfUovf/view?usp=sharing",
     bio:[
         "Passionate about crafting engaging web experiences, I am a Front-End Developer specializing in React.js. With a keen eye for design and a commitment to clean code, I bring ideas to life through intuitive interfaces and seamless user interactions.",
         "My journey in web development has been driven by a desire to create visually stunning and highly functional websites. I thrive on transforming complex concepts into user-friendly applications, ensuring that every project I undertake is not only aesthetically pleasing but also delivers an exceptional user experience.",
@@ -15,8 +15,7 @@ export const PERSONAL_INFO = {
 export const SOCIAL_LINKS = {
     linkedin: "https://www.linkedin.com/in/razan-balata-18a134391",
     github: "https://github.com/Razanbalata",
-    twitter: "https://twitter.com/johndoe",
-    facebook: "https://www.facebook.com/johndoe",
+    facebook: "https://www.facebook.com/razann.balata",
 }
 
 export const NAV_LINKS = [
