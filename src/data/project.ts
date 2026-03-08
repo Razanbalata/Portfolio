@@ -46,8 +46,8 @@ export const projects = [
         image: "/assets/weather.png",
         categories:"Frontend",
         technologies: ["React", "JavaScript", "Material UI"],
-        demoUrl:"https://razanbalata.github.io/Weather-App/",
-        github:"https://github.com/Razanbalata/Weather-App"
+        demoUrl:"https://stellar-chimera-e80dc1.netlify.app/",
+        github:"https://github.com/Razanbalata/Weather-app"
     },
     {
         id:6,

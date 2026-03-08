@@ -12,27 +12,31 @@ import {
   SiPostman,
   SiSupabase,
   SiGlobus,
+  SiFirebase,
+  SiRedux,
 } from "react-icons/si";
 import { FiFigma } from "react-icons/fi";
 import { Database, GitBranch, Smartphone } from "lucide-react";
 
 function Skills() {
-  const skills = [
-    { name: "React.js", icon: SiReact, color: "#61DAFB" },
-    { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
-    { name: "Tailwind CSS", icon: SiTailwindcss, color: "#38BDF8" },
-    { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
-    { name: "React Query", icon: Database, color: "#FF4154" },
-    { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
-    { name: "Git & GitHub", icon: GitBranch, color: "#F05032" },
-    { name: "Responsive Design", icon: Smartphone, color: "#38BDF8" },
-    { name: "Figma", icon: FiFigma, color: "#F24E1E" },
-    { name: "Framer Motion", icon: SiFramer, color: "#0055FF" },
-    { name: "Postman", icon: SiPostman, color: "#FF6C37" },
-    { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
-    { name: "REST APIs", icon: Icons.Globe, color: "#4B5563" },
-    { name: "Zustand", icon: Icons.Layers, color: "#443E38" },
-  ];
+const skills = [
+  { name: "React.js", icon: SiReact, color: "#61DAFB" },
+  { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
+  { name: "Tailwind CSS", icon: SiTailwindcss, color: "#38BDF8" },
+  { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+  { name: "React Query", icon: Database, color: "#FF4154" },
+  { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+  { name: "Git & GitHub", icon: GitBranch, color: "#F05032" },
+  { name: "Responsive Design", icon: Smartphone, color: "#38BDF8" },
+  { name: "Figma", icon: FiFigma, color: "#F24E1E" },
+  { name: "Framer Motion", icon: SiFramer, color: "#0055FF" },
+  { name: "Postman", icon: SiPostman, color: "#FF6C37" },
+  { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
+  { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
+  { name: "Redux Toolkit", icon: SiRedux, color: "#764ABC" },
+  { name: "REST APIs", icon: Icons.Globe, color: "#4B5563" },
+  { name: "Zustand", icon: Icons.Layers, color: "#443E38" },
+];
 
   return (
     <section id="skills" className="py-20 bg-[var(--color-bg)]">
