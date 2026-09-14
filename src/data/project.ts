@@ -69,6 +69,27 @@ export const projects = [
         demoUrl:"https://razanbalata.github.io/Social-Media-Project/",
         github:"https://github.com/Razanbalata/Advanced-Js-Course-final-Project"
 
+    },
+    {
+        id:8,
+        title:"AI Outfit Recommendation Platform",
+        description:"An AI-powered platform that recommends outfits based on user preferences and body type.",
+        image: "/assets/ai-outfit.png",
+        categories:"Full Stack",
+        technologies: ["Python", "TensorFlow", "Flask"],
+        demoUrl:"https://ai-outfit-recommendation-platform.vercel.app/",
+        github:"https://github.com/noorafifi889/ai-outfit-recommendation-platform"
+    },
+
+    {
+        id:9,
+        title:"Recipe finder",
+        description:"A web application that allows users to search for recipes based on their ingredients and dietary preferences.",
+        image: "/assets/recipe.png",
+        categories:"Frontend",
+        technologies: ["React", "JavaScript", "Tailwind CSS"],
+        demoUrl:"https://recipe-recommendation-app-flame.vercel.app/",
+        github:"https://github.com/Razanbalata/recipe-recommendation-app"
     }
 ]
 
