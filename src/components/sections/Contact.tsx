@@ -54,7 +54,7 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-28 bg-[var(--color-bg)] overflow-hidden transition-colors duration-500">
+    <section id="lets talk" className="relative py-28 bg-[var(--color-bg)] overflow-hidden transition-colors duration-500">
       
       {/* خلفية متوهجة خفيفة */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

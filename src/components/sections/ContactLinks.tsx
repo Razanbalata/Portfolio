@@ -47,7 +47,7 @@ export default function ContactLinks() {
   ];
 
   return (
-    <section id="contact-links" className="relative py-24 bg-[var(--color-bg)] overflow-hidden">
+    <section id="contact" className="relative py-24 bg-[var(--color-bg)] overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 text-center">
         
         {/* العنوان والوصف */}

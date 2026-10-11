@@ -20,10 +20,11 @@ export const SOCIAL_LINKS = {
 }
 
 export const NAV_LINKS = [
+    {id:'home',label:'Home'},
     {id:"about", label: "About"},
-    {id:"skills", label: "Skills"},
+    {id:'experience', label: "Experience"},
+    {id:"education", label: "Education"},
     {id:"projects", label: "Projects"},
-    {id:"services", label: "Services"},
     {id:"contact", label: "Contact"},
     {id:"lets talk",label:'Let’s Talk'}
 ]
