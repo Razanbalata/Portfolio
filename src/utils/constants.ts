@@ -16,6 +16,7 @@ export const SOCIAL_LINKS = {
     linkedin: "https://www.linkedin.com/in/razan-balata-18a134391",
     github: "https://github.com/Razanbalata",
     facebook: "https://www.facebook.com/razann.balata",
+    twitter: "https://twitter.com/RazanBalata",
 }
 
 export const NAV_LINKS = [
@@ -24,6 +25,7 @@ export const NAV_LINKS = [
     {id:"projects", label: "Projects"},
     {id:"services", label: "Services"},
     {id:"contact", label: "Contact"},
+    {id:"lets talk",label:'Let’s Talk'}
 ]
 
 export const ABOUT_STATS = [
