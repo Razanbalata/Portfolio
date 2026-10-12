@@ -1,147 +1,201 @@
 "use client";
+
 import React from "react";
-import { ChevronDown, Star } from "lucide-react";
-import { SiReact, SiTailwindcss, SiNextdotjs } from "react-icons/si";
-import { PERSONAL_INFO } from "@/src/utils/constants";
+import Image from "next/image";
+import {
+  Sparkles,
+  Code2,
+  Rocket,
+  Linkedin,
+  Mail,
+  ArrowDown,
+  Hand,
+} from "lucide-react";
+import { PERSONAL_INFO, SOCIAL_LINKS } from "@/src/utils/constants";
 import { scrollToSection } from "@/src/hooks/useScrollSpy";
 import FadeIn from "../animations/FadeIn";
 import RadialGradientBackgorund from "../backgrounds/RadialGradientBackgorund";
-import Image from "next/image";
-import TypingText from "../animations/TypingStreaming";
 
-function Hero() {
+export default function Hero() {
   return (
-    <section id='home' className="relative min-h-screen flex items-center overflow-hidden bg-[var(--color-bg)]">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center pt-28 pb-16 overflow-hidden bg-[var(--color-bg)] transition-colors duration-500"
+    >
       <RadialGradientBackgorund variant="hero" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left */}
-          <div className="text-left">
+      <div className="relative z-10 max-w-[86%] mx-auto px-6 lg:px-6 lg:py-8 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          {/* الجانب الأيسر (تفاصيل النصوص) */}
+          <div className="lg:col-span-7 flex flex-col text-left">
+            {/* الشارة العلوية */}
             <FadeIn delay={0}>
-              <div
-                className="inline-flex items-center gap-2.5 mb-8 px-5 py-3 
-                              bg-[var(--color-secondary)] 
-                              border border-[var(--color-accent)] 
-                              rounded-full"
-              >
-                <Star className="w-4 h-4 text-[var(--color-primary)] fill-[var(--color-primary)]" />
-                <span className="text-xs md:text-sm text-[var(--color-subtext)] tracking-wide">
-                  {PERSONAL_INFO.title} | Based in {PERSONAL_INFO.location}
-                </span>
+              <div className="inline-flex items-center gap-2 mb-4 text-md font-medium tracking-widest text-[var(--color-primary)] uppercase">
+                <Sparkles className="w-6 h-6 text-[var(--color-primary)]" />
+                <span>WELCOME TO MY WORLD</span>
               </div>
             </FadeIn>
 
+            {/* العنوان الرئيسي مع الوهج */}
             <FadeIn delay={100}>
-              <h2 className="text-4xl md:text-5xl font-semibold text-[var(--color-text)] mb-4 leading-tight">
-                Razan Balata,
-              </h2>
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-[var(--color-text)] tracking-tight mb-3">
+                Hi, I'm{" "}
+                <span className="text-[var(--color-primary)] relative inline-block">
+                  Razan
+                  <span className="absolute inset-0 bg-[var(--color-primary)]/20 blur-2xl -z-10 rounded-full" />
+                </span>
+              </h1>
             </FadeIn>
 
+            {/* المسمى الوظيفي */}
             <FadeIn delay={200}>
-              <h2 className="text-3xl md:text-4xl font-medium text-[var(--color-primary)] mb-4">
-                <TypingText
-                  texts={[
-                    "Web Developer",
-                    "Frontend Developer",
-                    "Problem Solver",
-                    "React Developer",
-                    "Next.js Developer",
-                  ]}
-                />
-              </h2>
+              <div className="flex items-center gap-2 text-xl sm:text-2xl font-semibold text-[var(--color-subtext)] my-4">
+                <span>Frontend-focused Full-Stack Developer</span>
+                <Hand className="w-10 h-10 text-[var(--color-primary)] animate-bounce inline-block origin-bottom-right" />
+              </div>
             </FadeIn>
 
+            {/* الوصف المقتضب */}
             <FadeIn delay={300}>
-              <p className="text-lg text-[var(--color-subtext)] max-w-[550px] mb-8 leading-relaxed">
-                Hi, I'm a passionate React.js developer with experience in
-                building dynamic and responsive web applications. I specialize
-                in creating user-friendly interfaces and seamless user
-                experiences.
+              <p className="text-sm sm:text-lg text-[var(--color-subtext)] leading-relaxed max-w-2xl mb-6">
+                I enjoy turning ideas into practical, user-friendly web
+                products. My main focus is building modern interfaces with{" "}
+                <span className="text-[var(--color-text)] font-semibold">
+                  React, Next.js, TypeScript, and Tailwind CSS
+                </span>
+                , while expanding my backend skills with{" "}
+                <span className="text-[var(--color-text)] font-semibold">
+                  Laravel & MySQL
+                </span>{" "}
+                and integrating AI APIs like Gemini & Groq.
               </p>
             </FadeIn>
 
+            {/* الاقتباس المميز */}
             <FadeIn delay={400}>
-              <div className="flex items-center gap-4 flex-wrap">
+              <blockquote className="border-l-4 border-[var(--color-primary)] pl-4 py-1 text-xs sm:text-lg italic text-[var(--color-subtext)]/90 mb-8 font-medium">
+                "I believe in what I can learn to do, not just in what I can
+                already do."
+              </blockquote>
+            </FadeIn>
+
+            {/* بطاقات الإحصائيات الصغيرة */}
+            <FadeIn delay={500}>
+              <div className="flex flex-wrap gap-4 mb-10">
+                <div className="bg-[var(--color-secondary)]/50 backdrop-blur-md border border-[var(--color-accent)]/30 rounded-xl px-3 py-3.5 flex items-center gap-3.5 shadow-md">
+                  <div className="p-2.5 rounded-xl bg-[var(--color-bg)] text-[var(--color-primary)] border border-[var(--color-accent)]/20">
+                    <Code2 className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <div className="text-lg font-bold text-[var(--color-text)] leading-none">
+                      2+
+                    </div>
+                    <div className="text-sm text-[var(--color-subtext)] font-medium mt-1">
+                      Years Experience
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-[var(--color-secondary)]/50 backdrop-blur-md border border-[var(--color-accent)]/30 rounded-xl px-3 py-3.5 flex items-center gap-3.5 shadow-md">
+                  <div className="p-2.5 rounded-xl bg-[var(--color-bg)] text-[var(--color-primary)] border border-[var(--color-accent)]/20">
+                    <Rocket className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <div className="text-lg font-bold text-[var(--color-text)] leading-none">
+                      15+
+                    </div>
+                    <div className="text-sm text-[var(--color-subtext)] font-medium mt-1">
+                      Projects & Apps
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+
+            {/* أزرار الإجراءات وروابط التواصل */}
+            <FadeIn delay={600}>
+              <div className="flex items-center gap-3 flex-wrap">
                 <button
-                  onClick={() => scrollToSection("contact")}
-                  className="px-6 py-3 rounded-lg font-medium
-                             bg-[var(--color-primary)]
-                             text-white
-                             hover:opacity-90
-                             transition-all duration-300"
+                  onClick={() => scrollToSection("projects")}
+                  className="px-6 py-3 rounded-xl font-bold text-xs sm:text-sm bg-[var(--color-primary)] text-white hover:opacity-90 transition-all cursor-pointer shadow-lg shadow-[var(--color-primary)]/20"
                 >
-                  Get in Touch
+                  View My Work
                 </button>
 
                 <button
-                  onClick={() => scrollToSection("projects")}
-                  className="px-6 py-3 rounded-lg font-medium
-                             border border-[var(--color-accent)]
-                             text-[var(--color-text)]
-                             hover:bg-[var(--color-secondary)]
-                             transition-all duration-300"
+                  onClick={() => scrollToSection("lets talk")}
+                  className="px-6 py-3 rounded-xl font-semibold text-xs sm:text-sm bg-[var(--color-secondary)]/80 hover:bg-[var(--color-secondary)] border border-[var(--color-accent)] text-[var(--color-text)] transition-all cursor-pointer"
                 >
-                  View Projects
+                  Let's Talk
                 </button>
+
+                {/* أزرار أيقونات مواقع التواصل */}
+                <a
+                  href={SOCIAL_LINKS.linkedin || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full bg-[var(--color-secondary)]/60 hover:bg-[var(--color-secondary)] border border-[var(--color-accent)] text-[var(--color-subtext)] hover:text-[var(--color-primary)] transition-all"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="w-4 h-4" />
+                </a>
+
+                <a
+                  href={`mailto:${PERSONAL_INFO.email}`}
+                  className="p-3 rounded-full bg-[var(--color-secondary)]/60 hover:bg-[var(--color-secondary)] border border-[var(--color-accent)] text-[var(--color-subtext)] hover:text-[var(--color-primary)] transition-all"
+                  aria-label="Email"
+                >
+                  <Mail className="w-4 h-4" />
+                </a>
               </div>
             </FadeIn>
           </div>
 
-          {/* Right */}
-          <FadeIn delay={200}>
-            <div className="relative max-w-[450px] ml-auto group">
-              <div className="relative overflow-hidden rounded-xl p-1.5 border border-[var(--color-accent)]">
-                {/* Animated Border */}
-                <div
-                  className="absolute inset-[-2px] rounded-2xl
-                    bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-secondary)] to-[var(--color-primary)]
-                    opacity-40 animate-spin-slow blur-lg pointer-events-none"
-                ></div>
+          {/* الجانب الأيمن (الصورة الدائرية مع التوهج) */}
+          <div className="lg:col-span-5 flex justify-center items-center relative">
+            <FadeIn delay={300}>
+              <div className="relative group">
+                {/* توهج خلفي ناعم خلف الصورة */}
+                <div className="absolute inset-0 rounded-full bg-[var(--color-primary)]/20 blur-3xl group-hover:bg-[var(--color-primary)]/30 transition-all duration-500 pointer-events-none" />
 
-                {/* Image */}
-                <div
-                  className="relative rounded-lg overflow-hidden p-1 bg-[var(--color-secondary)] 
-                    group-hover:shadow-xl transition-shadow duration-300"
-                >
-                  <Image
-                    src="/assets/hero-image.png"
-                    alt="Developer Image"
-                    width={500}
-                    height={500}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-300 rounded-lg"></div>
+                {/* الإطار الدائري للصورة */}
+                <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full p-2 border-2 border-[var(--color-primary)]/40 bg-[var(--color-secondary)]/40 backdrop-blur-md overflow-hidden shadow-2xl">
+                  <div className="relative w-full h-full rounded-full overflow-hidden">
+                    <Image
+                      src="/assets/hero-image.png"
+                      alt="Razan Balata"
+                      fill
+                      priority
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
                 </div>
 
-                {/* Tech Logos */}
-                <div className="absolute bottom-6 left-6 z-20">
-                  <FadeIn delay={500}>
-                    <div
-                      className="flex items-center gap-4 bg-[var(--color-secondary)]/80 backdrop-blur-sm px-6 py-3 rounded-full border border-[var(--color-accent)]
-                        hover:scale-105 hover:bg-[var(--color-secondary)]/90 transition-all duration-300"
-                    >
-                      <SiReact className="w-6 h-6 text-[var(--color-primary)] animate-bounce-slow" />
-                      <SiNextdotjs className="w-6 h-6 text-[var(--color-primary)] animate-bounce-slow delay-100" />
-                      <SiTailwindcss className="w-6 h-6 text-[var(--color-primary)] animate-bounce-slow delay-200" />
-                    </div>
-                  </FadeIn>
+                {/* شارة حالة التوظيف السفلية */}
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-[var(--color-secondary)]/90 backdrop-blur-xl border border-[var(--color-accent)] px-4 py-2 rounded-full shadow-xl flex items-center gap-2 whitespace-nowrap z-20">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="text-[11px] font-medium text-[var(--color-subtext)]">
+                    Backend Developer @UCAS Incubator
+                  </span>
                 </div>
               </div>
-            </div>
-          </FadeIn>
+            </FadeIn>
+          </div>
+        </div>
+
+        {/* مؤشر السكرول السفلي */}
+        <div className="flex flex-col items-center justify-center mt-2 gap-1 opacity-70 hover:opacity-100 transition-opacity animate-bounce">
+          <button
+            onClick={() => scrollToSection("about")}
+            className="flex flex-col items-center gap-1 cursor-pointer group"
+          >
+            <span className="text-md font-mono tracking-widest uppercase text-[var(--color-subtext)] group-hover:text-[var(--color-primary)] transition-colors font-bold">
+              SCROLL
+            </span>
+            <ArrowDown className="w-3.5 h-3.5 text-[var(--color-primary)] animate-bounce" />
+          </button>
         </div>
       </div>
-
-      {/* Scroll Indicator */}
-      <button
-        onClick={() => scrollToSection("about")}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce"
-      >
-        <ChevronDown className="w-8 h-8 text-[var(--color-primary)]" />
-      </button>
     </section>
   );
 }
-
-export default Hero;
