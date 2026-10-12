@@ -1,11 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import FadeIn from "../animations/FadeIn";
-import { EXPERIENCES } from "@/src/data/experience";
+import { EXPERIENCES, ExperienceItem } from "@/src/data/experience";
 import { Briefcase, Calendar } from "lucide-react";
+import ExperienceDetailModal from "../ui/ExperienceDetailModal";
 
 export default function Experience() {
+  const [selectedExperience, setSelectedExperience] = useState<ExperienceItem | null>(null);
+
   return (
     <section id="experience" className="relative py-24 bg-[var(--color-bg)] overflow-hidden transition-colors duration-500">
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
@@ -17,7 +20,7 @@ export default function Experience() {
               Work <span className="text-[var(--color-primary)]">Experience</span>
             </h2>
             <p className="text-[var(--color-subtext)] text-sm sm:text-base font-medium">
-              My professional journey and the companies I’ve worked with[cite: 9].
+              My professional journey and the companies I’ve worked with.
             </p>
           </div>
         </FadeIn>
@@ -26,7 +29,10 @@ export default function Experience() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {EXPERIENCES.map((exp, index) => (
             <FadeIn key={exp.id} delay={index * 100}>
-              <div className="bg-[var(--color-secondary)]/40 backdrop-blur-md border border-[var(--color-accent)]/30 hover:border-[var(--color-primary)]/50 rounded-[1rem] p-8 transition-all duration-300 group flex flex-col justify-between h-full shadow-lg">
+              <div
+                onClick={() => setSelectedExperience(exp)}
+                className="bg-[var(--color-secondary)]/40 backdrop-blur-md border border-[var(--color-accent)]/30 hover:border-[var(--color-primary)]/50 rounded-[1.5rem] p-8 transition-all duration-300 group flex flex-col justify-between h-full shadow-lg cursor-pointer hover:shadow-[0_10px_30px_rgba(0,0,0,0.2)]"
+              >
                 
                 <div>
                   <h3 className="text-xl font-bold text-[var(--color-text)] mb-2 group-hover:text-[var(--color-primary)] transition-colors">
@@ -53,7 +59,7 @@ export default function Experience() {
                   {exp.skills.map((skill, i) => (
                     <span
                       key={i}
-                      className="px-3 py-1 rounded-full text-[11px] font-medium bg-[var(--color-bg)]/80 text-[var(--color-text)] border border-[var(--color-accent)]/40 hover:border-[var(--color-primary)]/50 transition-all cursor-default"
+                      className="px-3 py-1 rounded-full text-[11px] font-medium bg-[var(--color-bg)]/80 text-[var(--color-text)] border border-[var(--color-accent)]/40"
                     >
                       {skill}
                     </span>
@@ -66,6 +72,12 @@ export default function Experience() {
         </div>
 
       </div>
+
+      {/* Experience Detail Modal */}
+      <ExperienceDetailModal
+        experience={selectedExperience}
+        onClose={() => setSelectedExperience(null)}
+      />
     </section>
   );
 }
