@@ -52,7 +52,7 @@ export default function EffectsButton({ onOpenDrawModal }: EffectsButtonProps) {
 
       {/* القائمة المنبثقة (Dropdown Menu) المطابقة للصورة */}
       {isOpen && (
-        <div className="absolute right-14 top-0 w-64 bg-[var(--color-secondary)]/95 backdrop-blur-xl border border-[var(--color-accent)]/50 rounded-2xl p-2 shadow-2xl z-50 animate-in fade-in slide-in-from-right-2">
+        <div className="absolute right-14 top-0 w-64 bg-[var(--color-secondary)]/95 backdrop-blur-xl border border-[var(--color-accent)]/10 rounded-2xl p-2 shadow-2xl z-50 animate-in fade-in slide-in-from-right-2">
           {/* خيارات الأنماط الجاهزة */}
           <div className="space-y-1">
             {EFFECT_OPTIONS.map((option) => {

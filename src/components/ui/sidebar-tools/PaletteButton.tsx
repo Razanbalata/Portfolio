@@ -1,24 +1,58 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Palette, Check } from "lucide-react";
 
 type ThemeOption = "sea" | "forest" | "ember" | "bronze";
+
+interface ThemeConfig {
+  name: ThemeOption;
+  label: string;
+  color: string;
+}
+
+const THEMES: ThemeConfig[] = [
+  { name: "sea", label: "Sea", color: "#06b6d4" },
+  { name: "forest", label: "Forest", color: "#10b981" },
+  { name: "ember", label: "Ember", color: "#f97316" },
+  { name: "bronze", label: "Bronze", color: "#d97706" },
+];
 
 interface PaletteButtonProps {
   onOpenMoreThemes: () => void;
 }
 
-export default function PaletteButton({
-  onOpenMoreThemes,
-}: PaletteButtonProps) {
+export default function PaletteButton({ onOpenMoreThemes }: PaletteButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeTheme, setActiveTheme] = useState<ThemeOption>("forest"); // Forest محددة افتراضياً مطابق للصورة[cite: 9]
+  const [activeTheme, setActiveTheme] = useState<string>("forest");
 
-  const handleSelectTheme = (theme: ThemeOption) => {
-    setActiveTheme(theme);
+ const applyThemeColor = (hexColor: string, themeName: string) => {
+    setActiveTheme(themeName);
+    
+    // تحديث متغيرات الـ CSS الموجودة في ملف الـ CSS لديكِ مباشرة
+    document.documentElement.style.setProperty("--color-primary", hexColor);
+    document.documentElement.style.setProperty("--color-accent", hexColor); // أو إضافة شفافية مثل `${hexColor}aa`
+
+    // حفظ اللون في المتصفح
+    localStorage.setItem("portfolio-theme-color", hexColor);
+    localStorage.setItem("portfolio-theme-name", themeName);
+  };
+
+  // استرجاع اللون المحفوظ عند تحميل الصفحة
+useEffect(() => {
+    const savedColor = localStorage.getItem("portfolio-theme-color");
+    const savedName = localStorage.getItem("portfolio-theme-name");
+    
+    if (savedColor && savedName) {
+      document.documentElement.style.setProperty("--color-primary", savedColor);
+      document.documentElement.style.setProperty("--color-accent", savedColor);
+      setActiveTheme(savedName);
+    }
+  }, []);
+
+  const handleSelectTheme = (theme: ThemeConfig) => {
+    applyThemeColor(theme.color, theme.name);
     setIsOpen(false);
-    console.log(`Theme switched to: ${theme}`);
   };
 
   return (
@@ -37,18 +71,21 @@ export default function PaletteButton({
         <Palette className="w-5 h-5" />
       </button>
 
-      {/* القائمة المنبثقة المطابقة للصورة[cite: 9] */}
+      {/* القائمة المنبثقة المطابقة للصورة */}
       {isOpen && (
-        <div className="absolute right-14 top-0 w-64 bg-[var(--color-secondary)]/95 backdrop-blur-xl border border-[var(--color-accent)]/50 rounded-2xl p-2 shadow-2xl z-50 animate-in fade-in slide-in-from-right-2">
+        <div className="absolute right-14 bottom-0 w-64 bg-[var(--color-secondary)]/95 backdrop-blur-xl border border-[var(--color-accent)]/10 rounded-2xl p-2 shadow-2xl z-50 animate-in fade-in slide-in-from-right-2">
           {/* Custom Theme Section */}
           <div className="px-3 py-1.5 text-[11px] font-bold text-[var(--color-subtext)] tracking-wider">
             Custom Theme
           </div>
           <button
-            onClick={() => handleSelectTheme("bronze")}
+            onClick={() => handleSelectTheme(THEMES[3])} // Bronze
             className="w-full flex items-center gap-3 p-2.5 rounded-xl transition-all duration-150 text-left cursor-pointer hover:bg-[var(--color-accent)]/20 text-[var(--color-text)]"
           >
-            <span className="w-3.5 h-3.5 rounded-full bg-amber-600 shrink-0 shadow-sm" />
+            <span
+              className="w-3.5 h-3.5 rounded-full shrink-0 shadow-sm"
+              style={{ backgroundColor: THEMES[3].color }}
+            />
             <span className="text-sm font-semibold">Bronze</span>
           </button>
 
@@ -59,59 +96,31 @@ export default function PaletteButton({
             Select Theme
           </div>
           <div className="space-y-1">
-            {/* Sea */}
-            <button
-              onClick={() => handleSelectTheme("sea")}
-              className={`w-full flex items-center justify-between p-2.5 rounded-xl transition-all duration-150 text-left cursor-pointer ${
-                activeTheme === "sea"
-                  ? "bg-[var(--color-primary)]/10 text-[var(--color-text)]"
-                  : "hover:bg-[var(--color-accent)]/20 text-[var(--color-subtext)]"
-              }`}
-            >
-              <div className="flex items-center gap-3">
-                <span className="w-3.5 h-3.5 rounded-full bg-cyan-400 shrink-0 shadow-sm" />
-                <span className="text-sm font-semibold">Sea</span>
-              </div>
-              {activeTheme === "sea" && (
-                <Check className="w-4 h-4 text-[var(--color-primary)]" />
-              )}
-            </button>
-
-            {/* Forest */}
-            <button
-              onClick={() => handleSelectTheme("forest")}
-              className={`w-full flex items-center justify-between p-2.5 rounded-xl transition-all duration-150 text-left cursor-pointer ${
-                activeTheme === "forest"
-                  ? "bg-[var(--color-primary)]/10 text-[var(--color-text)]"
-                  : "hover:bg-[var(--color-accent)]/20 text-[var(--color-subtext)]"
-              }`}
-            >
-              <div className="flex items-center gap-3">
-                <span className="w-3.5 h-3.5 rounded-full bg-emerald-500 shrink-0 shadow-sm" />
-                <span className="text-sm font-semibold">Forest</span>
-              </div>
-              {activeTheme === "forest" && (
-                <Check className="w-4 h-4 text-[var(--color-primary)]" />
-              )}
-            </button>
-
-            {/* Ember */}
-            <button
-              onClick={() => handleSelectTheme("ember")}
-              className={`w-full flex items-center justify-between p-2.5 rounded-xl transition-all duration-150 text-left cursor-pointer ${
-                activeTheme === "ember"
-                  ? "bg-[var(--color-primary)]/10 text-[var(--color-text)]"
-                  : "hover:bg-[var(--color-accent)]/20 text-[var(--color-subtext)]"
-              }`}
-            >
-              <div className="flex items-center gap-3">
-                <span className="w-3.5 h-3.5 rounded-full bg-orange-500 shrink-0 shadow-sm" />
-                <span className="text-sm font-semibold">Ember</span>
-              </div>
-              {activeTheme === "ember" && (
-                <Check className="w-4 h-4 text-[var(--color-primary)]" />
-              )}
-            </button>
+            {THEMES.slice(0, 3).map((theme) => {
+              const isSelected = activeTheme === theme.name;
+              return (
+                <button
+                  key={theme.name}
+                  onClick={() => handleSelectTheme(theme)}
+                  className={`w-full flex items-center justify-between p-2.5 rounded-xl transition-all duration-150 text-left cursor-pointer ${
+                    isSelected
+                      ? "bg-[var(--color-primary)]/10 text-[var(--color-text)]"
+                      : "hover:bg-[var(--color-accent)]/20 text-[var(--color-subtext)]"
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <span
+                      className="w-3.5 h-3.5 rounded-full shrink-0 shadow-sm"
+                      style={{ backgroundColor: theme.color }}
+                    />
+                    <span className="text-sm font-semibold">{theme.label}</span>
+                  </div>
+                  {isSelected && (
+                    <Check className="w-4 h-4 text-[var(--color-primary)]" />
+                  )}
+                </button>
+              );
+            })}
           </div>
 
           <div className="h-px bg-[var(--color-accent)]/30 my-1.5 mx-1" />

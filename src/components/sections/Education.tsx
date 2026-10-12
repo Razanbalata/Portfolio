@@ -34,7 +34,7 @@ export default function Education() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {EDUCATION_DATA.map((item, index) => (
             <FadeIn key={item.id} delay={index * 100}>
-              <div className="bg-[var(--color-secondary)]/40 backdrop-blur-md border border-[var(--color-accent)]/30 hover:border-[var(--color-primary)]/50 rounded-[1rem] p-8 transition-all duration-300 group flex flex-col justify-between h-full shadow-lg">
+              <div className="bg-[var(--color-secondary)]/40 backdrop-blur-md border border-[var(--color-accent)]/10 hover:border-[var(--color-primary)]/50 rounded-[1rem] p-8 transition-all duration-300 group flex flex-col justify-between h-full shadow-lg">
                 <div>
                   {/* Title */}
                   <h3 className="text-xl font-bold text-[var(--color-text)] mb-3 group-hover:text-[var(--color-primary)] transition-colors">

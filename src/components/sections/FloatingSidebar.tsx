@@ -58,7 +58,7 @@ export default function FloatingSidebar() {
         <a
           href={`${PERSONAL_INFO.resume}`}
           download="CV.pdf"
-          className="flex items-center gap-2.5 px-5 py-3.5 rounded-full bg-[var(--color-secondary)]/90 backdrop-blur-xl border border-[var(--color-accent)]/50 text-[var(--color-text)] hover:text-[var(--color-primary)] hover:border-[var(--color-primary)]/60 shadow-2xl transition-all duration-300 font-bold text-xs cursor-pointer group"
+          className="flex items-center gap-2.5 px-5 py-3.5 rounded-full bg-[var(--color-secondary)]/90 backdrop-blur-xl border border-[var(--color-accent)]/10 text-[var(--color-text)] hover:text-[var(--color-primary)] hover:border-[var(--color-primary)]/60 shadow-2xl transition-all duration-300 font-bold text-xs cursor-pointer group"
         >
           <Download className="w-4 h-4 text-[var(--color-primary)] group-hover:translate-y-0.5 transition-transform" />
           <span>Download CV</span>

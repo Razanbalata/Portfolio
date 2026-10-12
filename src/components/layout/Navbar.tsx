@@ -51,7 +51,7 @@ export default function Navbar() {
 
           {/* الكرت المنبثق للتفاصيل الحية عند الضغط */}
           {showStatusCard && (
-            <div className="absolute top-12 left-0 w-56 sm:w-64 bg-[var(--color-secondary)]/95 backdrop-blur-xl border border-[var(--color-accent)]/50 p-4 rounded-2xl shadow-2xl text-xs space-y-2.5 z-[70] animate-in fade-in slide-in-from-top-2">
+            <div className="absolute top-12 left-0 w-56 sm:w-64 bg-[var(--color-secondary)]/95 backdrop-blur-xl border border-[var(--color-accent)]/10 p-4 rounded-2xl shadow-2xl text-xs space-y-2.5 z-[70] animate-in fade-in slide-in-from-top-2">
               <div className="flex justify-start items-center gap-2 text-[var(--color-subtext)]">
                 <span className="font-mono uppercase text-[10px] tracking-wider">TIME:</span>
                 <span className="text-[var(--color-primary)] font-semibold font-mono">{currentTime || "02:29 PM"}</span>
@@ -64,7 +64,7 @@ export default function Navbar() {
                 <span className="font-mono uppercase text-[10px] tracking-wider">LOCATION:</span>
                 <span className="text-[var(--color-primary)] font-semibold">{PERSONAL_INFO.location || "Gaza"}</span>
               </div>
-              <div className="flex justify-start items-center gap-2 text-[var(--color-subtext)] pt-1 border-t border-[var(--color-accent)]/30">
+              <div className="flex justify-start items-center gap-2 text-[var(--color-subtext)] pt-1 border-t border-[var(--color-accent)]/10">
                 <span className="font-mono uppercase text-[10px] tracking-wider">STATUS:</span>
                 <span className="text-[var(--color-primary)] font-semibold">Available for Work</span>
               </div>
@@ -76,7 +76,7 @@ export default function Navbar() {
       {/* 2. شريط الملاحة الرئيسي (Main Nav Bar) المطابق للـ DOM بالضبط */}
       <nav className="fixed top-0 left-0 right-0 z-40 px-6 py-4">
         <div className="max-w-[86%] mx-auto">
-          <div className="bg-[var(--color-secondary)]/60 backdrop-blur-md border border-[var(--color-accent)]/40 rounded-xl px-6 py-6 flex items-center justify-between shadow-lg">
+          <div className="bg-[var(--color-secondary)]/60 backdrop-blur-md border border-[var(--color-accent)]/10 rounded-xl px-6 py-6 flex items-center justify-between shadow-lg">
             
             {/* الشعار / الاسم البارز على اليسار */}
             <a

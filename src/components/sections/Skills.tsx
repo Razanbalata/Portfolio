@@ -39,11 +39,11 @@ export default function Skills() {
               <FadeIn key={category.id} delay={index * 100}>
                 <div
                   onClick={() => setSelectedCategory(category)}
-                  className="bg-[var(--color-secondary)]/40 backdrop-blur-md border border-[var(--color-accent)]/30 hover:border-[var(--color-primary)]/50 rounded-[2rem] p-8 transition-all duration-300 group flex flex-col justify-between gap-2 h-full shadow-lg cursor-pointer hover:shadow-[0_10px_30px_rgba(0,0,0,0.2)]"
+                  className="bg-[var(--color-secondary)]/40 backdrop-blur-md border border-[var(--color-accent)]/10 hover:border-[var(--color-primary)]/50 rounded-[2rem] p-8 transition-all duration-300 group flex flex-col justify-between gap-2 h-full shadow-lg cursor-pointer hover:shadow-[0_10px_30px_rgba(0,0,0,0.2)]"
                 >
                   <div>
                     {/* Icon Box */}
-                    <div className="w-12 h-12 flex items-center justify-center bg-[var(--color-bg)] rounded-xl border border-[var(--color-accent)]/30 text-[var(--color-primary)] mb-6 group-hover:scale-110 transition-transform">
+                    <div className="w-12 h-12 flex items-center justify-center bg-[var(--color-bg)] rounded-xl border border-[var(--color-accent)]/10 text-[var(--color-primary)] mb-6 group-hover:scale-110 transition-transform">
                       <Icon className="w-6 h-6" />
                     </div>
 
@@ -61,7 +61,7 @@ export default function Skills() {
                     {category.items.map((item, i) => (
                       <span
                         key={i}
-                        className="px-3.5 py-1.5 rounded-full text-xs font-medium bg-[var(--color-bg)]/80 text-[var(--color-text)] border border-[var(--color-accent)]/40 hover:border-[var(--color-primary)]/50 hover:text-[var(--color-primary)] transition-all"
+                        className="px-3.5 py-1.5 rounded-md text-xs font-medium bg-[var(--color-bg)]/80 text-[var(--color-text)] border border-[var(--color-accent)]/10 hover:border-[var(--color-primary)]/50 hover:text-[var(--color-primary)] transition-all"
                       >
                         {item.name}
                       </span>

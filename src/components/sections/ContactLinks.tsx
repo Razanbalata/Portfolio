@@ -72,7 +72,7 @@ export default function ContactLinks() {
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-6 bg-[var(--color-secondary)]/40 hover:bg-[var(--color-secondary)]/80 border border-[var(--color-accent)]/30 hover:border-[var(--color-primary)]/50 rounded-2xl transition-all duration-300 group text-left shadow-lg"
+                  className="flex items-center gap-4 p-6 bg-[var(--color-secondary)]/40 hover:bg-[var(--color-secondary)]/80 border border-[var(--color-accent)]/10 hover:border-[var(--color-primary)]/50 rounded-2xl transition-all duration-300 group text-left shadow-lg"
                 >
                   <div className={`w-12 h-12 flex items-center justify-center rounded-xl border ${item.color} transition-transform group-hover:scale-110`}>
                     <Icon className="w-6 h-6" />

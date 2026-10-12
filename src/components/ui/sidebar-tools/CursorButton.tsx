@@ -60,7 +60,7 @@ export default function CursorButton() {
 
       {/* القائمة المنبثقة المطابقة للصورة */}
       {isOpen && (
-        <div className="absolute right-14 top-0 w-64 bg-[var(--color-secondary)]/95 backdrop-blur-xl border border-[var(--color-accent)]/50 rounded-2xl p-2 shadow-2xl z-50 animate-in fade-in slide-in-from-right-2">
+        <div className="absolute right-14 top-0 w-64 bg-[var(--color-secondary)]/95 backdrop-blur-xl border border-[var(--color-accent)]/10 rounded-2xl p-2 shadow-2xl z-50 animate-in fade-in slide-in-from-right-2">
           <div className="px-3 py-2 text-xs font-bold text-[var(--color-subtext)] tracking-wider">
             Cursor Style
           </div>

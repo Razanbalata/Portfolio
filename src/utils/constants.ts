@@ -1,36 +1,90 @@
 export const PERSONAL_INFO = {
-    name: "Razan Balata",
-    title: "Front End Developer",
-    email:  "razanbalata@gmail.com",
-    phone: "0599920307",
-    location: "Palestine, Gaza",
-    resume: "https://drive.google.com/file/d/1Rk6Ka-5mOm9-W1gnm9XQgNfe6WzfUovf/view?usp=sharing",
-    bio:[
-        "Passionate about crafting engaging web experiences, I am a Front-End Developer specializing in React.js. With a keen eye for design and a commitment to clean code, I bring ideas to life through intuitive interfaces and seamless user interactions.",
-        "My journey in web development has been driven by a desire to create visually stunning and highly functional websites. I thrive on transforming complex concepts into user-friendly applications, ensuring that every project I undertake is not only aesthetically pleasing but also delivers an exceptional user experience.",
-        "With a strong foundation in HTML, CSS, and JavaScript, I leverage the power of React.js to build dynamic and responsive web applications. I am dedicated to staying up-to-date with the latest industry trends and best practices, continuously honing my skills to deliver innovative solutions that exceed client expectations."
-    ],
+  name: "Razan Balata",
+  title: "Front End Developer",
+  email: "razanbalata@gmail.com",
+  phone: "0599920307",
+  location: "Palestine, Gaza",
+  resume:
+    "https://drive.google.com/file/d/1Rk6Ka-5mOm9-W1gnm9XQgNfe6WzfUovf/view?usp=sharing",
+  bio: [
+    "Passionate about crafting engaging web experiences, I am a Front-End Developer specializing in React.js. With a keen eye for design and a commitment to clean code, I bring ideas to life through intuitive interfaces and seamless user interactions.",
+    "My journey in web development has been driven by a desire to create visually stunning and highly functional websites. I thrive on transforming complex concepts into user-friendly applications, ensuring that every project I undertake is not only aesthetically pleasing but also delivers an exceptional user experience.",
+    "With a strong foundation in HTML, CSS, and JavaScript, I leverage the power of React.js to build dynamic and responsive web applications. I am dedicated to staying up-to-date with the latest industry trends and best practices, continuously honing my skills to deliver innovative solutions that exceed client expectations.",
+  ],
 };
 
 export const SOCIAL_LINKS = {
-    linkedin: "https://www.linkedin.com/in/razan-balata-18a134391",
-    github: "https://github.com/Razanbalata",
-    facebook: "https://www.facebook.com/razann.balata",
-    twitter: "https://twitter.com/RazanBalata",
-}
+  linkedin: "https://www.linkedin.com/in/razan-balata-18a134391",
+  github: "https://github.com/Razanbalata",
+  facebook: "https://www.facebook.com/razann.balata",
+  twitter: "https://twitter.com/RazanBalata",
+};
 
 export const NAV_LINKS = [
-    {id:'home',label:'Home'},
-    {id:"about", label: "About"},
-    {id:'experience', label: "Experience"},
-    {id:"education", label: "Education"},
-    {id:"projects", label: "Projects"},
-    {id:"contact", label: "Contact"},
-    {id:"lets talk",label:'Let’s Talk'}
-]
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "experience", label: "Experience" },
+  { id: "education", label: "Education" },
+  { id: "projects", label: "Projects" },
+  { id: "contact", label: "Contact" },
+  { id: "lets talk", label: "Let’s Talk" },
+];
 
 export const ABOUT_STATS = [
-    {label:"Projects Completed", value:"10+"},
-    {label:"Skills Mastered", value:"10+"},
-    {label:"Code Commits", value:"50+"}
-]
+  { label: "Projects Completed", value: "10+" },
+  { label: "Skills Mastered", value: "10+" },
+  { label: "Code Commits", value: "50+" },
+];
+
+export const COLOR_PALETTE = [
+  { name: "Red", hex: "#ef4444" },
+  { name: "Crimson", hex: "#dc2626" },
+  { name: "Rose", hex: "#f43f5e" },
+  { name: "Pink", hex: "#ec4899" },
+  { name: "Fuchsia", hex: "#d946ef" },
+  { name: "Purple", hex: "#a855f7" },
+  { name: "Violet", hex: "#8b5cf6" },
+  { name: "Indigo", hex: "#6366f1" },
+  { name: "Blue", hex: "#3b82f6" },
+  { name: "Sky", hex: "#0ea5e9" },
+  { name: "Cyan", hex: "#06b6d4" },
+  { name: "Teal", hex: "#14b8a6" },
+  { name: "Emerald", hex: "#10b981" },
+  { name: "Green", hex: "#22c55e" },
+  { name: "Lime", hex: "#84cc16" },
+  { name: "Yellow", hex: "#eab308" },
+  { name: "Amber", hex: "#f59e0b" },
+  { name: "Orange", hex: "#f97316" },
+  { name: "Coral", hex: "#ff5722" },
+  { name: "Tomato", hex: "#ff3b30" },
+  { name: "Maroon", hex: "#800000" },
+  { name: "Burgundy", hex: "#800020" },
+  { name: "Magenta", hex: "#ff00ff" },
+  { name: "Plum", hex: "#dda0dd" },
+  { name: "Orchid", hex: "#da70d6" },
+  { name: "Lavender", hex: "#e6e6fa" },
+  { name: "Periwinkle", hex: "#c3c7f4" },
+  { name: "Navy", hex: "#000080" },
+  { name: "Cobalt", hex: "#0047ab" },
+  { name: "Azure", hex: "#007fff" },
+  { name: "Sapphire", hex: "#0f52ba" },
+  { name: "Ocean", hex: "#006994" },
+  { name: "Aqua", hex: "#00ffff" },
+  { name: "Turquoise", hex: "#40e0d0" },
+  { name: "Mint", hex: "#98ff98" },
+  { name: "Sage", hex: "#bcb88a" },
+  { name: "Forest", hex: "#228b22" },
+  { name: "Olive", hex: "#808000" },
+  { name: "Chartreuse", hex: "#7fff00" },
+  { name: "Gold", hex: "#ffd700" },
+  { name: "Honey", hex: "#eb9605" },
+  { name: "Peach", hex: "#ffe5b4" },
+  { name: "Salmon", hex: "#fa8072" },
+  { name: "Rust", hex: "#b7410e" },
+  { name: "Copper", hex: "#b87333" },
+  { name: "Bronze", hex: "#cd7f32" },
+  { name: "Slate", hex: "#708090" },
+  { name: "Steel", hex: "#4682b4" },
+  { name: "Silver", hex: "#c0c0c0" },
+  { name: "Graphite", hex: "#383838" },
+];

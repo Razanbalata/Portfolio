@@ -20,7 +20,7 @@ export default function StatusButton() {
 
       {/* نافذة صغيرة توضح حالة الاتصال عند المرور بالمؤشر */}
       {showTooltip && (
-        <div className="absolute right-14 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-[var(--color-secondary)]/95 border border-[var(--color-accent)] shadow-xl backdrop-blur-md text-[11px] font-medium text-[var(--color-text)] whitespace-nowrap z-50 animate-in fade-in">
+        <div className="absolute right-14 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-[var(--color-secondary)]/95 border border-[var(--color-accent)]/10 shadow-xl backdrop-blur-md text-[11px] font-medium text-[var(--color-text)] whitespace-nowrap z-50 animate-in fade-in">
           <span className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             Online & Connected

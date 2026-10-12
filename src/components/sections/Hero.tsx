@@ -82,8 +82,8 @@ export default function Hero() {
             {/* بطاقات الإحصائيات الصغيرة */}
             <FadeIn delay={500}>
               <div className="flex flex-wrap gap-4 mb-10">
-                <div className="bg-[var(--color-secondary)]/50 backdrop-blur-md border border-[var(--color-accent)]/30 rounded-xl px-3 py-3.5 flex items-center gap-3.5 shadow-md">
-                  <div className="p-2.5 rounded-xl bg-[var(--color-bg)] text-[var(--color-primary)] border border-[var(--color-accent)]/20">
+                <div className="bg-[var(--color-secondary)]/50 backdrop-blur-md border border-[var(--color-accent)]/10 rounded-xl px-3 py-3.5 flex items-center gap-3.5 shadow-md">
+                  <div className="p-2.5 rounded-xl bg-[var(--color-bg)] text-[var(--color-primary)] border border-[var(--color-accent)]/10">
                     <Code2 className="w-4 h-4" />
                   </div>
                   <div>
@@ -96,8 +96,8 @@ export default function Hero() {
                   </div>
                 </div>
 
-                <div className="bg-[var(--color-secondary)]/50 backdrop-blur-md border border-[var(--color-accent)]/30 rounded-xl px-3 py-3.5 flex items-center gap-3.5 shadow-md">
-                  <div className="p-2.5 rounded-xl bg-[var(--color-bg)] text-[var(--color-primary)] border border-[var(--color-accent)]/20">
+                <div className="bg-[var(--color-secondary)]/50 backdrop-blur-md border border-[var(--color-accent)]/10 rounded-xl px-3 py-3.5 flex items-center gap-3.5 shadow-md">
+                  <div className="p-2.5 rounded-xl bg-[var(--color-bg)] text-[var(--color-primary)] border border-[var(--color-accent)]/10">
                     <Rocket className="w-4 h-4" />
                   </div>
                   <div>

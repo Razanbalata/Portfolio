@@ -77,7 +77,7 @@ function Contact() {
 
         {/* صندوق النموذج المركّز */}
         <FadeIn delay={100}>
-          <div className="bg-[var(--color-secondary)]/40 backdrop-blur-md border border-[var(--color-accent)]/30 rounded-[2rem] p-8 md:p-10 shadow-2xl text-left">
+          <div className="bg-[var(--color-secondary)]/40 backdrop-blur-md border border-[var(--color-accent)]/10 rounded-[1rem] p-8 md:p-10 shadow-2xl text-left">
             <form action="https://formspree.io/f/mdalylpp" method="POST" onSubmit={handleSubmit} className="space-y-6">
               
               {/* حقل الاسم */}
@@ -87,7 +87,7 @@ function Contact() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-5 py-4 bg-[var(--color-bg)] border border-[var(--color-accent)]/40 rounded-xl text-[var(--color-text)] placeholder-[var(--color-subtext)]/50 focus:border-[var(--color-primary)] outline-none transition-all text-sm"
+                  className="w-full px-5 py-4 bg-[var(--color-bg)] border border-[var(--color-accent)]/10 rounded-xl text-[var(--color-text)] placeholder-[var(--color-subtext)]/50 focus:border-[var(--color-primary)] outline-none transition-all text-sm"
                   placeholder="Your Name"
                 />
               </div>
@@ -99,7 +99,7 @@ function Contact() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-5 py-4 bg-[var(--color-bg)] border border-[var(--color-accent)]/40 rounded-xl text-[var(--color-text)] placeholder-[var(--color-subtext)]/50 focus:border-[var(--color-primary)] outline-none transition-all text-sm"
+                  className="w-full px-5 py-4 bg-[var(--color-bg)] border border-[var(--color-accent)]/10 rounded-xl text-[var(--color-text)] placeholder-[var(--color-subtext)]/50 focus:border-[var(--color-primary)] outline-none transition-all text-sm"
                   placeholder="Your Email"
                 />
               </div>
@@ -111,7 +111,7 @@ function Contact() {
                   rows={4}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-5 py-4 bg-[var(--color-bg)] border border-[var(--color-accent)]/40 rounded-xl text-[var(--color-text)] placeholder-[var(--color-subtext)]/50 focus:border-[var(--color-primary)] outline-none transition-all resize-none text-sm"
+                  className="w-full px-5 py-4 bg-[var(--color-bg)] border border-[var(--color-accent)]/10 rounded-xl text-[var(--color-text)] placeholder-[var(--color-subtext)]/50 focus:border-[var(--color-primary)] outline-none transition-all resize-none text-sm"
                   placeholder="Your Message"
                 />
               </div>

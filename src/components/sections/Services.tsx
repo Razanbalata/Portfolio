@@ -34,9 +34,9 @@ export default function Services() {
 
             return (
               <FadeIn key={service.id} delay={index * 100}>
-                <div className="bg-[var(--color-secondary)]/40 hover:bg-[var(--color-secondary)]/80 border border-[var(--color-accent)]/30 hover:border-[var(--color-primary)]/50 rounded-2xl p-8 transition-all duration-300 group flex flex-col items-center text-center shadow-lg h-full">
+                <div className="bg-[var(--color-secondary)]/40 hover:bg-[var(--color-secondary)]/80 border border-[var(--color-accent)]/10 hover:border-[var(--color-primary)]/50 rounded-2xl p-8 transition-all duration-300 group flex flex-col items-center text-center shadow-lg h-full">
                   {/* حاوية الأيقونة */}
-                  <div className="w-14 h-14 flex items-center justify-center bg-[var(--color-bg)] rounded-xl border border-[var(--color-accent)]/30 text-[var(--color-primary)] mb-6 group-hover:scale-110 transition-transform">
+                  <div className="w-14 h-14 flex items-center justify-center bg-[var(--color-bg)] rounded-xl border border-[var(--color-accent)]/10 text-[var(--color-primary)] mb-6 group-hover:scale-110 transition-transform">
                     <IconComponent className="w-6 h-6" />
                   </div>
 
@@ -58,7 +58,7 @@ export default function Services() {
           <div className="flex justify-center">
             <button
               onClick={() => scrollToSection("about")}
-              className="px-6 py-3 rounded-full bg-[var(--color-secondary)]/60 hover:bg-[var(--color-secondary)] border border-[var(--color-accent)]/40 hover:border-[var(--color-primary)] text-[var(--color-text)] text-sm font-medium transition-all duration-300 flex items-center gap-2 cursor-pointer shadow-md group"
+              className="px-6 py-3 rounded-full bg-[var(--color-secondary)]/60 hover:bg-[var(--color-secondary)] border border-[var(--color-accent)]/10 hover:border-[var(--color-primary)] text-[var(--color-text)] text-sm font-medium transition-all duration-300 flex items-center gap-2 cursor-pointer shadow-md group"
             >
               <span>About Me</span>
               <span className="group-hover:translate-x-1 transition-transform text-[var(--color-primary)]">

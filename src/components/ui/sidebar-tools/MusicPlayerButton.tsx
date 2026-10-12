@@ -98,7 +98,7 @@ export default function MusicPlayerButton() {
 
       {/* الكرت المنبثق المطابق للصورة */}
       {isOpen && (
-        <div className="absolute right-14 top-0 w-80 bg-[var(--color-secondary)]/95 backdrop-blur-2xl border border-[var(--color-accent)]/50 rounded-3xl p-5 shadow-2xl z-50 animate-in fade-in slide-in-from-right-2">
+        <div className="absolute right-14 top-0 w-80 bg-[var(--color-secondary)]/95 backdrop-blur-2xl border border-[var(--color-accent)]/10 rounded-3xl p-5 shadow-2xl z-50 animate-in fade-in slide-in-from-right-2">
           {/* Header */}
           <div className="flex items-center gap-2 mb-4">
             <Music className="w-5 h-5 text-[var(--color-primary)]" />
@@ -108,7 +108,7 @@ export default function MusicPlayerButton() {
           </div>
 
           {/* Volume Control Bar */}
-          <div className="flex items-center gap-3 mb-4 p-3 rounded-2xl bg-[var(--color-bg)]/60 border border-[var(--color-accent)]/30">
+          <div className="flex items-center gap-3 mb-4 p-3 rounded-2xl bg-[var(--color-bg)]/60 border border-[var(--color-accent)]/10">
             <Volume2 className="w-4 h-4 text-[var(--color-subtext)] shrink-0" />
             <input
               type="range"

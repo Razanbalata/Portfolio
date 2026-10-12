@@ -26,7 +26,7 @@ function About() {
 
         {/* Big Glassmorphic Card Container */}
         <FadeIn delay={100}>
-          <div className="bg-[var(--color-secondary)]/40 backdrop-blur-md border border-[var(--color-accent)]/30 rounded-[1rem] p-8 md:p-12 md:py-16 shadow-2xl relative overflow-hidden">
+          <div className="bg-[var(--color-secondary)]/40 backdrop-blur-md border border-[var(--color-accent)]/10 rounded-[1rem] p-8 md:p-12 md:py-16 shadow-2xl relative overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               {/* Left Side: Biography Texts */}
               <div className="lg:col-span-7 flex flex-col justify-center">

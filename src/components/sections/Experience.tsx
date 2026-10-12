@@ -31,7 +31,7 @@ export default function Experience() {
             <FadeIn key={exp.id} delay={index * 100}>
               <div
                 onClick={() => setSelectedExperience(exp)}
-                className="bg-[var(--color-secondary)]/40 backdrop-blur-md border border-[var(--color-accent)]/30 hover:border-[var(--color-primary)]/50 rounded-[1.5rem] p-8 transition-all duration-300 group flex flex-col justify-between h-full shadow-lg cursor-pointer hover:shadow-[0_10px_30px_rgba(0,0,0,0.2)]"
+                className="bg-[var(--color-secondary)]/40 backdrop-blur-md border border-[var(--color-accent)]/10 hover:border-[var(--color-primary)]/50 rounded-[1.5rem] p-8 transition-all duration-300 group flex flex-col justify-between h-full shadow-lg cursor-pointer hover:shadow-[0_10px_30px_rgba(0,0,0,0.2)]"
               >
                 
                 <div>
@@ -55,11 +55,11 @@ export default function Experience() {
                 </div>
 
                 {/* Tech Pills */}
-                <div className="flex flex-wrap gap-2 pt-2 border-t border-[var(--color-accent)]/20">
+                <div className="flex flex-wrap gap-2 pt-2 border-t border-[var(--color-accent)]/10">
                   {exp.skills.map((skill, i) => (
                     <span
                       key={i}
-                      className="px-3 py-1 rounded-full text-[11px] font-medium bg-[var(--color-bg)]/80 text-[var(--color-text)] border border-[var(--color-accent)]/40"
+                      className="px-3 py-1 rounded-md text-[11px] font-medium bg-[var(--color-bg)]/80 text-[var(--color-text)] border border-[var(--color-accent)]/10"
                     >
                       {skill}
                     </span>
