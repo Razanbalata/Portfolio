@@ -15,10 +15,12 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="relative w-12 h-12 flex items-center justify-center rounded-2xl 
-                 bg-[var(--color-secondary)]/50 border border-[var(--color-accent)]/20 
-                 hover:border-[var(--color-primary)]/40 hover:bg-[var(--color-secondary)]
-                 group transition-all duration-500 shadow-sm overflow-hidden"
+      className="relative w-12 h-12 flex items-center justify-center rounded-full 
+                 bg-background/80 border border-border/50 hover:border-[var(--color-primary)]/60 
+                 hover:bg-background text-[var(--color-subtext)] hover:text-[var(--color-text)]
+                 group transition-all duration-300 shadow-lg backdrop-blur-md cursor-pointer overflow-hidden"
+      title={theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"}
+      aria-label="Toggle Theme Mode"
     >
       {/* Hover Background Effect */}
       <div className="absolute inset-0 bg-[var(--color-primary)] opacity-0 group-hover:opacity-[0.05] transition-opacity duration-500" />
@@ -27,7 +29,7 @@ export default function ThemeToggle() {
         {theme === "light" ? (
           <Moon
             className="w-5 h-5 text-[var(--color-text)] group-hover:text-[var(--color-primary)] 
-                          transition-all duration-500 rotate-0 group-hover:-rotate-12"
+                         transition-all duration-500 rotate-0 group-hover:-rotate-12"
           />
         ) : (
           <Sun

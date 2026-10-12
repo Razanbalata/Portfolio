@@ -20,7 +20,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center pt-28 pb-16 overflow-hidden bg-[var(--color-bg)] transition-colors duration-500"
+      className="relative min-h-screen flex items-center pt-28 pb-5 overflow-hidden bg-[var(--color-bg)] transition-colors duration-500"
     >
       <RadialGradientBackgorund variant="hero" />
 
@@ -184,7 +184,7 @@ export default function Hero() {
         </div>
 
         {/* مؤشر السكرول السفلي */}
-        <div className="flex flex-col items-center justify-center mt-2 gap-1 opacity-70 hover:opacity-100 transition-opacity animate-bounce">
+        <div className="flex flex-col items-center justify-center gap-1 opacity-70 hover:opacity-100 transition-opacity animate-bounce">
           <button
             onClick={() => scrollToSection("about")}
             className="flex flex-col items-center gap-1 cursor-pointer group"

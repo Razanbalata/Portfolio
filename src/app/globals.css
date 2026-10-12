@@ -4,6 +4,15 @@
 /* 🌤 LIGHT MODE (Default) */
 /* ============================= */
 
+/* Focus Mode Behavior */
+body.focus-mode-active header,
+body.focus-mode-active .fixed.bottom-6,
+body.focus-mode-active aside > *:not(.focus-button-wrapper) {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
 :root {
   --color-bg: #fff7fb;        /* خلفية وردي فاتح جدًا */
   --color-secondary: #fdebf3; /* كاردات / عناصر ثانوية */
