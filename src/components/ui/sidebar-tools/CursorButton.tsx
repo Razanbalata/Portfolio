@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   MousePointer,
   Check,
@@ -33,18 +33,56 @@ const CURSOR_OPTIONS: CursorOption[] = [
 
 export default function CursorButton() {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeCursor, setActiveCursor] = useState<CursorStyle>("ring"); // Ring افتراضي مطابق للصورة[cite: 8]
+  const [activeCursor, setActiveCursor] = useState<CursorStyle>("ring");
+
+  // قراءة النمط المحفوظ عند التحميل أو التغيير
+  useEffect(() => {
+    const checkActiveCursor = () => {
+      const saved = localStorage.getItem("portfolio-cursor-style") as CursorStyle;
+      if (saved) {
+        setActiveCursor(saved);
+        applyCursorClass(saved);
+      }
+    };
+    checkActiveCursor();
+
+    window.addEventListener("storage", checkActiveCursor);
+    window.addEventListener("cursor-updated", checkActiveCursor);
+    return () => {
+      window.removeEventListener("storage", checkActiveCursor);
+      window.removeEventListener("cursor-updated", checkActiveCursor);
+    };
+  }, []);
+
+  // دالة لتطبيق كلاس المؤشر على مستوى الـ body أو الصفحة
+  const applyCursorClass = (cursorId: CursorStyle) => {
+    document.body.classList.remove(
+      "cursor-ring",
+      "cursor-dot",
+      "cursor-crosshair",
+      "cursor-blade",
+      "cursor-glitch"
+    );
+    document.body.classList.add(`cursor-${cursorId}`);
+  };
 
   const handleSelectCursor = (cursorId: CursorStyle) => {
     setActiveCursor(cursorId);
     setIsOpen(false);
-    console.log(`Cursor style changed to: ${cursorId}`);
-    // سيتم ربط هذا النمط بمكون مؤشر المأرة المخصص العام لاحقاً
+    localStorage.setItem("portfolio-cursor-style", cursorId);
+    applyCursorClass(cursorId);
+    
+    // إطلاق حدث ليتم مزامنته في باقي المكونات إذا لزم الأمر
+    window.dispatchEvent(new Event("cursor-updated"));
   };
+
+  // العثور على أيقونة النمط النشط لعرضها على الزر الرئيسي
+  const currentActiveOption = CURSOR_OPTIONS.find((opt) => opt.id === activeCursor);
+  const CurrentIcon = currentActiveOption ? currentActiveOption.icon : <MousePointer className="w-5 h-5 -rotate-90" />;
 
   return (
     <div className="relative">
-      {/* زر الأيقونة في السايدبار */}
+      {/* زر الأيقونة الديناميكي في السايدبار */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={`siderbar-hover relative flex items-center justify-center w-12 h-12 rounded-full border transition-all duration-300 cursor-pointer shadow-lg backdrop-blur-md ${
@@ -55,10 +93,12 @@ export default function CursorButton() {
         title="Cursor Style"
         aria-label="Cursor Style"
       >
-        <MousePointer className="w-5 h-5 -rotate-90" />
+        <div className="w-5 h-5 flex items-center justify-center text-[var(--color-primary)]">
+          {CurrentIcon}
+        </div>
       </button>
 
-      {/* القائمة المنبثقة المطابقة للصورة */}
+      {/* القائمة المنبثقة */}
       {isOpen && (
         <div className="absolute right-14 top-0 w-64 bg-[var(--color-secondary)]/95 backdrop-blur-xl border border-[var(--color-accent)]/10 rounded-2xl p-2 shadow-2xl z-50 animate-in fade-in slide-in-from-right-2">
           <div className="px-3 py-2 text-xs font-bold text-[var(--color-subtext)] tracking-wider">

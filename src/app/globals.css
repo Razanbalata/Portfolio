@@ -212,6 +212,27 @@ body.focus-mode-active .focus-button-wrapper button {
   will-change: transform;
 }
 
+/* إخفاء المؤشر الافتراضي وتطبيق النمط المختار */
+body.cursor-dot {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><circle cx='5' cy='5' r='5' fill='%2310b981'/></svg>") 5 5, auto;
+}
+
+body.cursor-crosshair {
+  cursor: crosshair;
+}
+
+body.cursor-blade {
+  cursor: pointer;
+}
+
+body.cursor-ring, body.cursor-glitch {
+  cursor: default; /* أو يمكنك تخصيصه حسب رغبتك */
+}
+/* إخفاء مؤشر الماوس الافتراضي في كامل الموقع لتظهر الأشكال المخصصة حصراً */
+body, a, button, input, textarea, select {
+  cursor: none !important;
+}
+
 /* ============================= */
 /* Utility Classes */
 /* ============================= */

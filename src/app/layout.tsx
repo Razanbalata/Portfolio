@@ -5,6 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "../utils/ThemeProvider";
 import FloatingSidebar from "../components/sections/FloatingSidebar";
 import BackgroundEffects from "../components/ui/sidebar-tools/BackgroundEffects";
+import CustomCursor from "../components/ui/sidebar-tools/CustomCursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,7 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <BackgroundEffects />
+          <CustomCursor/>
           {children}
           <FloatingSidebar />
         </ThemeProvider>
