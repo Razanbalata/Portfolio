@@ -15,7 +15,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="relative w-12 h-12 flex items-center justify-center rounded-full 
+      className="siderbar-hover relative w-12 h-12 flex items-center justify-center rounded-full 
                  bg-background/80 border border-border/50 hover:border-[var(--color-primary)]/60 
                  hover:bg-background text-[var(--color-subtext)] hover:text-[var(--color-text)]
                  group transition-all duration-300 shadow-lg backdrop-blur-md cursor-pointer overflow-hidden"

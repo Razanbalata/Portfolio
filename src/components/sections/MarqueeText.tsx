@@ -17,7 +17,7 @@ export default function MarqueeText() {
   ];
 
   return (
-    <div className="overflow-hidden whitespace-nowrap bg-[var(--color-secondary)]/30 border-y border-[var(--color-accent)]/10 py-6">
+    <div className="overflow-hidden whitespace-nowrap bg-[var(--color-bg)] border-y border-[var(--color-accent)]/10 py-6">
       <motion.div
         animate={{ x: ["0%", "-50%"] }}
         transition={{ repeat: Infinity, duration: 25, ease: "linear" }}

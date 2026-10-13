@@ -22,15 +22,19 @@ body.focus-mode-active .focus-button-wrapper button {
   transform: none;
 }
 
-
+.siderbar-hover:hover {
+  background-color: var(--color-primary);
+  opacity: 0.9; /* أو تحكم بالشفافية ككل للعنصر أو عبر لون مختلف */
+  border: 3px solid var(--color-primary);
+}
 
 :root {
   --color-bg: #fff7fb;        /* خلفية وردي فاتح جدًا */
   --color-secondary: #fdebf3; /* كاردات / عناصر ثانوية */
   --color-primary: #1a11247a;   /* وردي هادئ رئيسي */
   --color-accent: #040d13c4;    /* وردي أفتح للـ hover */
-  --color-text: #3a1f2d;      /* نص داكن مائل للوردي */
-  --color-subtext: #10040a;   /* نص فرعي ناعم */
+  --color-text: #130d10;      /* نص داكن مائل للوردي */
+  --color-subtext: #322a2f8d;   /* نص فرعي ناعم */
 
   --font-display: "Poppins", sans-serif;
 

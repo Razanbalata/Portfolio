@@ -23,7 +23,7 @@ export default function ProjectCard({ project, onSelect }: ProjectCardProps) {
   const { title, description, image, demoUrl, github } = project;
 
   return (
-    <div className="group relative bg-[#0b131a] border border-[#1e293b] hover:border-[var(--color-primary)]/50 rounded-2xl overflow-hidden shadow-xl transition-all duration-300 flex flex-col justify-between h-full">
+    <div className="group relative bg-[var(--color-bg)] border border-[var(--color-bg)] hover:border-[var(--color-primary)]/50 rounded-2xl overflow-hidden shadow-xl transition-all duration-300 flex flex-col justify-between h-full">
       
       {/* الجزء العلوي: الصورة والنقرة لفتح المودال مع تأثير الـ Hover */}
       <div onClick={onSelect} className="cursor-pointer flex-1 flex flex-col justify-between">
@@ -48,10 +48,10 @@ export default function ProjectCard({ project, onSelect }: ProjectCardProps) {
 
         {/* النصوص المختصرة */}
         <div className="p-6">
-          <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[var(--color-primary)] transition-colors duration-300">
+          <h3 className="text-xl font-bold text-[var(--color-text)] mb-2 group-hover:text-[var(--color-primary)] transition-colors duration-300">
             {title}
           </h3>
-          <p className="text-gray-400 text-xs sm:text-sm leading-relaxed line-clamp-2">
+          <p className="text-[var(--color-subtext)]/80 font-semibold text-xs sm:text-sm leading-relaxed line-clamp-2">
             {description}
           </p>
         </div>

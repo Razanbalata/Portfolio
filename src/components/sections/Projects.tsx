@@ -53,7 +53,7 @@ export default function Projects() {
                 className={`px-6 py-2.5 rounded-full text-xs font-bold transition-all duration-300 cursor-pointer ${
                   activeCategory === category
                     ? "bg-[var(--color-primary)] text-black shadow-[0_0_20px_rgba(var(--color-primary),0.4)]"
-                    : "bg-[#0b131a] text-gray-300 border border-[#1e293b] hover:border-[var(--color-primary)]/50 hover:text-white"
+                    : "bg-[var(--color-bg)] text-[var(--color-subtext)] hover:bg-[var(--color-primary)]/50"
                 }`}
               >
                 {category}
