@@ -6,6 +6,7 @@ import FadeIn from "../animations/FadeIn";
 import { Star } from "lucide-react";
 import ProjectCard from "../ui/ProjectCard";
 import ProjectDetailModal from "../ui/ProjectDetailModal";
+import { AnimatePresence,motion } from "framer-motion";
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -46,19 +47,25 @@ export default function Projects() {
         {/* أزرار الفلترة والتصنيفات */}
         <FadeIn delay={100}>
           <div className="flex flex-wrap items-center justify-center gap-3 mb-16">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`px-6 py-2.5 rounded-full text-xs font-bold transition-all duration-300 cursor-pointer ${
-                  activeCategory === category
-                    ? "bg-[var(--color-primary)] text-black shadow-[0_0_20px_rgba(var(--color-primary),0.4)]"
-                    : "bg-[var(--color-bg)] text-[var(--color-subtext)] hover:bg-[var(--color-primary)]/50"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
+            {categories.map((category) => {
+              const isActive = activeCategory === category;
+
+              return (
+                <button
+                  key={category}
+                  onClick={() => setActiveCategory(category)}
+                  className={`px-6 py-2.5 rounded-full text-xs font-bold
+          border transition-all duration-300 ease-out
+          cursor-pointer hover:-translate-y-0.5 active:scale-95 ${
+            isActive
+              ? "bg-[var(--color-primary)] text-black border-[var(--color-primary)] shadow-lg shadow-black/10"
+              : "bg-[var(--color-bg)] text-[var(--color-subtext)] border-transparent hover:border-[var(--color-primary)]/40 hover:text-[var(--color-text)]"
+          }`}
+                >
+                  {category}
+                </button>
+              );
+            })}
           </div>
         </FadeIn>
 
@@ -70,16 +77,27 @@ export default function Projects() {
               FEATURED WORK
             </span>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProjects.map((project) => (
-              <div key={project.id} className="h-full">
-                <ProjectCard
-                  project={project}
-                  onSelect={() => setSelectedProject(project)}
-                />
-              </div>
-            ))}
-          </div>
+          
+<AnimatePresence mode="wait">
+  <motion.div
+    key={activeCategory}
+    initial={{ opacity: 0, y: 12 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -8 }}
+    transition={{ duration: 0.3, ease: "easeInOut" }}
+    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+  >
+    {filteredProjects.map((project) => (
+      <div key={project.id} className="h-full">
+        <ProjectCard
+          project={project}
+          onSelect={() => setSelectedProject(project)}
+        />
+      </div>
+    ))}
+  </motion.div>
+</AnimatePresence>
+
         </FadeIn>
       </div>
 
