@@ -4,8 +4,6 @@
 /* 🌤 LIGHT MODE (الأصلي الخاص بكِ - ثابت وبدون تغيير) */
 /* ============================= */
 
-
-
 body.focus-mode-active .sidebar-elements {
   opacity: 0 !important;
   visibility: hidden !important;
@@ -29,17 +27,17 @@ body.focus-mode-active .focus-button-wrapper button {
 }
 
 :root {
-  --color-bg: #fff7fb;        /* خلفية وردي فاتح جدًا */
+  --color-bg: #fff7fb; /* خلفية وردي فاتح جدًا */
   --color-secondary: #fdebf3; /* كاردات / عناصر ثانوية */
-  --color-primary: #1a11247a;   /* وردي هادئ رئيسي */
-  --color-accent: #040d13c4;    /* وردي أفتح للـ hover */
-  --color-text: #130d10;      /* نص داكن مائل للوردي */
-  --color-subtext: #322a2f8d;   /* نص فرعي ناعم */
+  --color-primary: #1a11247a; /* وردي هادئ رئيسي */
+  --color-accent: #040d13c4; /* وردي أفتح للـ hover */
+  --color-text: #130d10; /* نص داكن مائل للوردي */
+  --color-subtext: #322a2f8d; /* نص فرعي ناعم */
 
-  --font-display:"Sora";
+  --font-display: "Geist Mono";
 
   /* المتغيرات الافتراضية للثيمات الديناميكية (تتغير عبر الباليت) */
-  --theme-primary: #06b6d4;   /* أزرق سماوي افتراضي متوافق مع الصور */
+  --theme-primary: #06b6d4; /* أزرق سماوي افتراضي متوافق مع الصور */
   --theme-glow: rgba(6, 182, 212, 0.25);
 }
 
@@ -49,10 +47,10 @@ body.focus-mode-active .focus-button-wrapper button {
 
 .dark {
   /* الخلفية والكاردات والسايدبار تظل داكنة وثابتة وفخمة دائماً */
-  --color-bg: #0b131a;        
-  --color-secondary: #131d28; 
-  --color-text: #f8eaf1;      
-  --color-subtext: #94a3b8;   
+  --color-bg: #060e158f;
+  --color-secondary: #131d28;
+  --color-text: #f8eaf1;
+  --color-subtext: #94a3b8;
 
   /* الألوان الرئيسية تتغير ديناميكياً حسب اختيار المستخدم من الباليت */
   --color-primary: var(--theme-primary);
@@ -73,7 +71,9 @@ body.focus-mode-active .focus-button-wrapper button {
     background-color: var(--color-bg);
     color: var(--color-text);
     overflow-x: hidden;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
   }
 }
 
@@ -112,23 +112,43 @@ body.focus-mode-active .focus-button-wrapper button {
 /* ============================= */
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes blink {
-  0%, 50%, 100% { opacity: 1; }
-  25%, 75% { opacity: 0; }
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0;
+  }
 }
 
 .animate-blink {
@@ -146,6 +166,50 @@ body.focus-mode-active .focus-button-wrapper button {
 
 .animate-spin-slow {
   animation: spin 8s linear infinite;
+}
+
+@keyframes floatAndSpin {
+  0% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translateY(-35px) translateX(15px) rotate(180deg);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(0px) translateX(0px) rotate(360deg);
+    opacity: 0.15;
+  }
+}
+
+.custom-floating-shape {
+  animation: floatAndSpin 8s ease-in-out infinite;
+}
+
+@keyframes matrixSeamlessFall {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 0.4; }
+  90% { opacity: 0.4; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+@keyframes matrixCharFlip {
+  0% { transform: rotateX(0deg) rotateY(0deg); opacity: 0.6; }
+  50% { transform: rotateX(180deg) rotateY(180deg); opacity: 0.9; }
+  100% { transform: rotateX(360deg) rotateY(360deg); opacity: 0.6; }
+}
+
+.matrix-seamless-column {
+  animation: matrixSeamlessFall linear infinite;
+  will-change: transform, opacity;
+  mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+}
+
+.matrix-flip-char {
+  animation: matrixCharFlip linear infinite;
+  will-change: transform;
 }
 
 /* ============================= */
