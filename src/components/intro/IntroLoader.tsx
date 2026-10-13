@@ -39,7 +39,7 @@ export default function IntroLoader({
   }, [onComplete, name.length]);
 
   return (
-    <div className="fixed inset-0 z-[999] flex flex-col justify-between p-8 bg-[var(--color-bg)] text-[var(--color-text)] transition-colors duration-300 select-none">
+    <div className="fixed inset-0 z-[999] flex flex-col justify-between p-8 bg-[var(--color-secondary)] text-[var(--color-text)] transition-colors duration-300 select-none">
       
       {/* الزاوية اليسرى العلوية: إصدار الموقع */}
       <div className="text-[11px] font-mono text-[var(--color-subtext)] tracking-wider">

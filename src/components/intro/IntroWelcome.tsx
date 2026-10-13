@@ -21,10 +21,10 @@ export default function IntroWelcome({ onEnter }: IntroWelcomeProps) {
   }, [onEnter]);
 
   return (
-    <div className="fixed inset-0 z-[999] flex flex-col items-center justify-center bg-[var(--color-bg)] text-[var(--color-text)] transition-colors duration-300 select-none">
+    <div className="fixed inset-0 z-[999] flex flex-col items-center justify-center bg-[var(--color-secondary)] text-[var(--color-text)] transition-colors duration-300 select-none">
       {/* طبقة التوهج الديناميكية في الخلفية */}
       <div
-        className="absolute w-[500px] h-[500px] rounded-full blur-[120px] opacity-20 pointer-events-none transition-all duration-500"
+        className="absolute w-[500px] h-[500px] rounded-full blur-[150px] opacity-20 pointer-events-none transition-all duration-500"
         style={{ backgroundColor: "var(--color-primary)" }}
       />
 

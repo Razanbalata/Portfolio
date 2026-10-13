@@ -166,7 +166,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   {
     id: "ai-realtime",
     icon: Sparkles,
-    title: "AI Integration & Automation",
+    title: "AI Integration",
     description:
       "Integrating cutting-edge LLMs and AI services to automate features, generate dynamic content, and add smart interactive features into web apps.",
     items: [
