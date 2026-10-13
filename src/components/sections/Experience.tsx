@@ -11,7 +11,7 @@ export default function Experience() {
 
   return (
     <section id="experience" className="relative py-24 bg-[var(--color-bg)] overflow-hidden transition-colors duration-500">
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="relative z-10 max-w-[87%] mx-auto px-6 lg:px-8">
         
         {/* Header */}
         <FadeIn delay={0}>

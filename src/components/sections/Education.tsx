@@ -16,7 +16,7 @@ export default function Education() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--color-primary)] opacity-[0.03] rounded-full blur-[140px]" />
       </div>
 
-      <div className="relative z-10 max-w-[80%] mx-auto px-6 lg:px-8">
+      <div className="relative z-10 max-w-[87%] mx-auto px-6 lg:px-8">
         {/* Header - العنوان الرئيسي */}
         <FadeIn delay={0}>
           <div className="text-center mb-16">

@@ -36,7 +36,7 @@ body.focus-mode-active .focus-button-wrapper button {
   --color-text: #130d10;      /* نص داكن مائل للوردي */
   --color-subtext: #322a2f8d;   /* نص فرعي ناعم */
 
-  --font-display: "Poppins", sans-serif;
+  --font-display:"Sora";
 
   /* المتغيرات الافتراضية للثيمات الديناميكية (تتغير عبر الباليت) */
   --theme-primary: #06b6d4;   /* أزرق سماوي افتراضي متوافق مع الصور */
