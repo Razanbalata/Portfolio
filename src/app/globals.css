@@ -4,14 +4,25 @@
 /* 🌤 LIGHT MODE (الأصلي الخاص بكِ - ثابت وبدون تغيير) */
 /* ============================= */
 
-/* Focus Mode Behavior */
-body.focus-mode-active header,
-body.focus-mode-active .fixed.bottom-6,
-body.focus-mode-active aside > *:not(.focus-button-wrapper) {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease-in-out;
+
+
+body.focus-mode-active .sidebar-elements {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateX(20px);
 }
+
+/* Keep the Focus button visible and clickable */
+body.focus-mode-active .focus-button-wrapper,
+body.focus-mode-active .focus-button-wrapper button {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: none;
+}
+
+
 
 :root {
   --color-bg: #fff7fb;        /* خلفية وردي فاتح جدًا */

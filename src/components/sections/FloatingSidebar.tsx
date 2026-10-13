@@ -24,37 +24,30 @@ export default function FloatingSidebar() {
 
   return (
     <>
-      {/* أزرار السايدبار العائمة (منفصلة ومستقلة 100%) */}
+      {/* 
+        قمنا بإضافة كلاسات في الـ CSS العام للتحكم، 
+        أو سنعزل زر الفوكس بطريقة تجعله الأداة الوحيدة البارزة 
+      */}
       <aside className="hidden lg:flex fixed right-6 top-1/2 -translate-y-1/2 z-[90] flex-col items-center gap-6">
-        
-        {/* 1. Fullscreen / Focus */}
-        <FocusButton />
+        {/* يظل ظاهراً دائماً */}
+        <div className="focus-button-wrapper relative z-[100]">
+          <FocusButton />
+        </div>
 
-        {/* 2. WiFi / Status */}
-        <StatusButton />
-
-        {/* 3. Music Player */}
-        <MusicPlayerButton />
-
-        {/* 4. Effects / Draw Custom */}
-        <EffectsButton onOpenDrawModal={() => setIsDrawModalOpen(true)} />
-
-        {/* 5. Cursor Style */}
-        <CursorButton />
-
-        {/* 6. Theme Toggle (Dark / Light Mode) */}
-        <ThemeToggle />
-
-        {/* 7. Palette / Custom Themes */}
-        <PaletteButton onOpenMoreThemes={() => setIsThemeModalOpen(true)} />
-
-        {/* 8. Language Switcher */}
-        <GlobeButton />
-
+        {/* تختفي كل هذه الأدوات */}
+        <div className="sidebar-elements flex flex-col items-center gap-6 transition-all duration-300">
+          <StatusButton />
+          <MusicPlayerButton />
+          <EffectsButton onOpenDrawModal={() => setIsDrawModalOpen(true)} />
+          <CursorButton />
+          <ThemeToggle />
+          <PaletteButton onOpenMoreThemes={() => setIsThemeModalOpen(true)} />
+          <GlobeButton />
+        </div>
       </aside>
 
-      {/* 9. Download CV Button (عائم بالأسفل) */}
-      <div className="hidden lg:flex fixed right-6 bottom-10 z-[90]">
+      {/* زر Download CV (سيختفي أيضاً مع باقي العناصر) */}
+      <div className="sidebar-elements hidden lg:flex fixed right-6 bottom-10 z-[90] transition-all duration-300">
         <a
           href={`${PERSONAL_INFO.resume}`}
           download="CV.pdf"
