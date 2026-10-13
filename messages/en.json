@@ -247,5 +247,14 @@
     "socialNote": "Prefer social media? Check out my",
     "contactLink": "contact page",
     "socialNoteEnd": "for more options."
+  },
+  "IntroLoader": {
+    "name": "Razan Balata",
+    "role": "SOFTWARE ENGINEER"
+  },
+  "IntroWelcome": {
+    "awaitingInput": "Awaiting Input",
+    "press": "Press",
+    "toBegin": "to begin"
   }
 }

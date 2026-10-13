@@ -248,5 +248,14 @@
     "socialNote": "بتفضّل التواصل عبر السوشال ميديا؟ تفقّد",
     "contactLink": "صفحة التواصل",
     "socialNoteEnd": "لخيارات إضافية."
+  },
+  "IntroLoader": {
+  "name": "رزان بلاطة",
+  "role": "مهندسة برمجيات"
+},
+  "IntroWelcome": {
+    "awaitingInput": "بانتظارك",
+    "press": "اضغطي",
+    "toBegin": "للبدء"
   }
 }

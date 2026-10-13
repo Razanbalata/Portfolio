@@ -1,14 +1,21 @@
+
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { ArrowRight, ArrowLeft } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 
 interface IntroWelcomeProps {
   onEnter: () => void;
 }
 
-export default function IntroWelcome({ onEnter }: IntroWelcomeProps) {
-  // الاستجابة للضغط على مفتاح Space أو Enter للبدء
+export default function IntroWelcome({
+  onEnter,
+}: IntroWelcomeProps) {
+  const t = useTranslations("IntroWelcome");
+  const locale = useLocale();
+  const isArabic = locale === "ar";
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.code === "Space" || e.key === "Enter") {
@@ -16,49 +23,65 @@ export default function IntroWelcome({ onEnter }: IntroWelcomeProps) {
         onEnter();
       }
     };
+
     window.addEventListener("keydown", handleKeyDown);
+
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [onEnter]);
 
   return (
-    <div className="fixed inset-0 z-[999] flex flex-col items-center justify-center bg-[var(--color-secondary)] text-[var(--color-text)] transition-colors duration-300 select-none">
-      {/* طبقة التوهج الديناميكية في الخلفية */}
+    <div
+      dir={isArabic ? "rtl" : "ltr"}
+      className="fixed inset-0 z-[999] flex flex-col items-center justify-center bg-[var(--color-secondary)] text-[var(--color-text)] transition-colors duration-300 select-none"
+    >
+      {/* Dynamic Background Glow */}
       <div
         className="absolute w-[500px] h-[500px] rounded-full blur-[150px] opacity-20 pointer-events-none transition-all duration-500"
         style={{ backgroundColor: "var(--color-primary)" }}
       />
 
       <div className="relative z-10 flex flex-col items-center gap-6">
-        {/* Awaiting Input Label */}
+        {/* Awaiting Input */}
         <span className="text-xs font-mono tracking-[0.3em] uppercase text-[var(--color-primary)] animate-pulse">
-          Awaiting Input
+          {t("awaitingInput")}
         </span>
 
-        {/* زر الـ ENTER الرئيسي مع الإطار المتقطع */}
+        {/* Enter Button */}
         <button
+          type="button"
           onClick={onEnter}
           className="group relative px-12 py-6 rounded-xl border border-[var(--color-primary)]/40 bg-[var(--color-primary)]/5 hover:bg-[var(--color-primary)]/15 backdrop-blur-xl transition-all duration-300 cursor-pointer flex items-center gap-4 shadow-[0_0_30px_rgba(var(--color-primary),0.15)]"
         >
-          {/* زوايا الإطار التقنية */}
+          {/* Technical Frame Corners */}
           <span className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-[var(--color-primary)]" />
           <span className="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-[var(--color-primary)]" />
           <span className="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-[var(--color-primary)]" />
           <span className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-[var(--color-primary)]" />
 
           <ArrowLeft className="w-4 h-4 text-[var(--color-primary)] opacity-60 group-hover:-translate-x-1 transition-transform" />
-          <span className="text-xl font-mono tracking-[0.4em] font-bold text-[var(--color-primary)]">
+
+          <span
+            dir="ltr"
+            className="text-xl font-mono tracking-[0.4em] font-bold text-[var(--color-primary)]"
+          >
             E N T E R
           </span>
+
           <ArrowRight className="w-4 h-4 text-[var(--color-primary)] opacity-60 group-hover:translate-x-1 transition-transform" />
         </button>
 
-        {/* تلميح الضغط على Space */}
+        {/* Keyboard Hint */}
         <div className="flex items-center gap-2 text-[11px] font-mono tracking-widest text-[var(--color-subtext)] uppercase mt-2">
-          <span>Press</span>
-          <kbd className="px-2 py-1 rounded border border-[var(--color-primary)]/30 bg-[var(--color-secondary)] text-[var(--color-primary)] text-[10px]">
+          <span>{t("press")}</span>
+
+          <kbd
+            dir="ltr"
+            className="px-2 py-1 rounded border border-[var(--color-primary)]/30 bg-[var(--color-secondary)] text-[var(--color-primary)] text-[10px]"
+          >
             SPACE
           </kbd>
-          <span>to begin</span>
+
+          <span>{t("toBegin")}</span>
         </div>
       </div>
     </div>
