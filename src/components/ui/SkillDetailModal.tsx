@@ -1,7 +1,9 @@
+
 "use client";
 
 import React, { useEffect, useState } from "react";
 import { X } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 
 interface SubSkill {
   name: string;
@@ -27,6 +29,10 @@ export default function SkillDetailModal({
 }: SkillDetailModalProps) {
   const [isVisible, setIsVisible] = useState(false);
 
+  const t = useTranslations("Skills");
+  const locale = useLocale();
+  const isArabic = locale === "ar";
+
   useEffect(() => {
     if (!category) {
       setIsVisible(false);
@@ -47,6 +53,7 @@ export default function SkillDetailModal({
   return (
     <div
       onClick={onClose}
+      dir={isArabic ? "rtl" : "ltr"}
       className={`fixed inset-0 z-[40] flex items-center justify-center p-4
         bg-black/70 backdrop-blur-md
         transition-opacity duration-300 ease-out
@@ -66,27 +73,27 @@ export default function SkillDetailModal({
           }`}
       >
         {/* Header */}
-        <div className="p-6 sm:p-8 pb-6 flex items-start justify-between border-b border-[var(--color-accent)]/20">
-          <div className="flex items-center gap-4">
-            <div className="w-14 h-14 flex items-center justify-center bg-[var(--color-bg)] rounded-2xl border border-[var(--color-accent)]/40 text-[var(--color-primary)] shadow-md">
+        <div className="p-6 sm:p-8 pb-6 flex items-start justify-between border-b border-[var(--color-accent)]/20 gap-4">
+          <div className="flex items-center gap-4 min-w-0">
+            <div className="shrink-0 w-14 h-14 flex items-center justify-center bg-[var(--color-bg)] rounded-2xl border border-[var(--color-accent)]/40 text-[var(--color-primary)] shadow-md">
               <Icon className="w-7 h-7" />
             </div>
 
-            <div>
+            <div className="min-w-0">
               <h2 className="text-2xl sm:text-3xl font-bold text-[var(--color-text)] tracking-tight">
-                {category.title}
+                {t(`categories.${category.id}.title`)}
               </h2>
 
               <p className="text-xs sm:text-sm text-[var(--color-subtext)] mt-1 max-w-xl leading-relaxed">
-                {category.description}
+                {t(`categories.${category.id}.description`)}
               </p>
             </div>
           </div>
 
           <button
             onClick={onClose}
-            aria-label="Close modal"
-            className="p-2 rounded-full text-[var(--color-subtext)] hover:text-[var(--color-text)] hover:bg-[var(--color-accent)]/30 transition-all cursor-pointer"
+            aria-label={t("close")}
+            className="shrink-0 p-2 rounded-full text-[var(--color-subtext)] hover:text-[var(--color-text)] hover:bg-[var(--color-accent)]/30 transition-all cursor-pointer"
           >
             <X className="w-6 h-6" />
           </button>
@@ -95,7 +102,7 @@ export default function SkillDetailModal({
         {/* Technologies Grid Content */}
         <div className="p-6 sm:p-8 overflow-y-auto space-y-4 pr-4 scrollbar-thin scrollbar-thumb-[var(--color-accent)]/60 scrollbar-track-transparent">
           <div className="text-xs font-bold text-[var(--color-subtext)] tracking-wider uppercase mb-2">
-            Technologies & Skills
+            {t("technologiesTitle")}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

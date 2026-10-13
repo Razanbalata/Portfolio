@@ -4,33 +4,42 @@ import React from "react";
 import FadeIn from "../animations/FadeIn";
 import { EDUCATION_DATA } from "@/src/data/education";
 import { Calendar, Building2 } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 
 export default function Education() {
+  const t = useTranslations("Education");
+  const locale = useLocale();
+  const isArabic = locale === "ar";
+
   return (
     <section
       id="education"
+      dir={isArabic ? "rtl" : "ltr"}
       className="relative py-24 bg-[var(--color-bg)] overflow-hidden transition-colors duration-500"
     >
-      {/* خلفية التوهج الخفيفة */}
+      {/* Background Glow */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--color-primary)] opacity-[0.03] rounded-full blur-[140px]" />
       </div>
 
       <div className="relative z-10 max-w-[87%] mx-auto px-6 lg:px-8">
-        {/* Header - العنوان الرئيسي */}
+        {/* Section Header */}
         <FadeIn delay={0}>
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-[var(--color-text)] mb-3 tracking-tight">
-              <span className="text-[var(--color-primary)]">Education</span> &
-              Certifications
+              <span className="text-[var(--color-primary)]">
+                {t("titleHighlight")}
+              </span>{" "}
+              {t("titleRest")}
             </h2>
+
             <p className="text-[var(--color-subtext)] text-sm sm:text-base font-medium">
-              My academic background and professional training journey[cite: 8].
+              {t("subtitle")}
             </p>
           </div>
         </FadeIn>
 
-        {/* Grid - شبكة الكروت (4 كروت) */}
+        {/* Education Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {EDUCATION_DATA.map((item, index) => (
             <FadeIn key={item.id} delay={index * 100}>
@@ -38,13 +47,13 @@ export default function Education() {
                 <div>
                   {/* Title */}
                   <h3 className="text-xl font-bold text-[var(--color-text)] mb-3 group-hover:text-[var(--color-primary)] transition-colors">
-                    {item.title}
+                    {t(`items.${item.id}.title`)}
                   </h3>
 
                   {/* Institution */}
                   <div className="flex items-center gap-2 text-xs sm:text-sm text-[var(--color-subtext)] mb-2 font-medium">
                     <Building2 className="w-4 h-4 text-[var(--color-primary)] shrink-0" />
-                    <span>{item.institution}</span>
+                    <span>{t(`items.${item.id}.institution`)}</span>
                   </div>
 
                   {/* Period */}
@@ -56,7 +65,7 @@ export default function Education() {
                   {/* Description */}
                   {item.description && (
                     <p className="text-xs sm:text-sm text-[var(--color-subtext)] leading-relaxed mt-2">
-                      {item.description}
+                      {t(`items.${item.id}.description`)}
                     </p>
                   )}
                 </div>

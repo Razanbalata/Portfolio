@@ -21,13 +21,13 @@ export const SOCIAL_LINKS = {
 };
 
 export const NAV_LINKS = [
-  { id: "home", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "experience", label: "Experience" },
-  { id: "projects", label: "Projects" },
-  { id: "education", label: "Education" },
-  { id: "contact", label: "Contact" },
-  { id: "lets talk", label: "Let’s Talk" },
+  { id: "home", labelKey: "home" },
+  { id: "about", labelKey: "about" },
+  { id: "experience", labelKey: "experience" },
+  { id: "projects", labelKey: "projects" },
+  { id: "education", labelKey: "education" },
+  { id: "contact", labelKey: "contact" },
+  { id: "lets-talk", labelKey: "letsTalk" },
 ];
 
 export const ABOUT_STATS = [

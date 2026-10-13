@@ -11,6 +11,7 @@ import {
   Code,
 } from "lucide-react";
 import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
 
 interface Project {
   title: string;
@@ -34,6 +35,10 @@ export default function ProjectDetailModal({
 }: ProjectDetailModalProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+
+  const t = useTranslations("Projects");
+  const locale = useLocale();
+  const isArabic = locale === "ar";
 
   useEffect(() => {
     if (!project) {
@@ -71,6 +76,7 @@ export default function ProjectDetailModal({
 
   return (
     <div
+      dir={isArabic ? "rtl" : "ltr"}
       onClick={onClose}
       className={`fixed inset-0 z-[40] flex items-center justify-center
         p-4 bg-black/80 backdrop-blur-md
@@ -95,12 +101,14 @@ export default function ProjectDetailModal({
         {/* Close Button */}
         <button
           onClick={onClose}
-          aria-label="Close modal"
-          className="absolute top-6 right-6 z-20 w-8 h-8
+          aria-label={t("modal.close")}
+          className={`absolute top-6 z-20 w-8 h-8
             flex items-center justify-center rounded-full
             bg-[#131d28] text-gray-400 hover:text-white
             hover:bg-[#1a2634] transition-all cursor-pointer
-            border border-[#223042]"
+            border border-[#223042] ${
+              isArabic ? "left-6" : "right-6"
+            }`}
         >
           <X className="w-4 h-4" />
         </button>
@@ -128,7 +136,7 @@ export default function ProjectDetailModal({
             <>
               <button
                 onClick={prevImage}
-                aria-label="Previous image"
+                aria-label={t("modal.previousImage")}
                 className="absolute left-3 top-1/2 -translate-y-1/2
                   w-8 h-8 flex items-center justify-center rounded-full
                   bg-black/60 backdrop-blur-md text-white
@@ -140,7 +148,7 @@ export default function ProjectDetailModal({
 
               <button
                 onClick={nextImage}
-                aria-label="Next image"
+                aria-label={t("modal.nextImage")}
                 className="absolute right-3 top-1/2 -translate-y-1/2
                   w-8 h-8 flex items-center justify-center rounded-full
                   bg-black/60 backdrop-blur-md text-white
@@ -170,7 +178,16 @@ export default function ProjectDetailModal({
           {project.categories && (
             <div className="flex items-center gap-1.5">
               <Tag className="w-4 h-4 text-[var(--color-primary)]" />
-              <span>{project.categories}</span>
+              <span>
+                {t(
+                  `categories.${getCategoryKey(project.categories)}` as
+                    | "categories.all"
+                    | "categories.frontend"
+                    | "categories.laravel"
+                    | "categories.fullStack"
+                    | "categories.vanillaJS"
+                )}
+              </span>
             </div>
           )}
         </div>
@@ -221,7 +238,7 @@ export default function ProjectDetailModal({
                 shadow-[0_0_15px_rgba(var(--color-primary),0.3)]"
             >
               <ExternalLink className="w-4 h-4" />
-              <span>Visit Website</span>
+              <span>{t("modal.visitWebsite")}</span>
             </a>
           )}
 
@@ -237,11 +254,22 @@ export default function ProjectDetailModal({
                 hover:border-[var(--color-primary)]/40 transition-all"
             >
               <Github className="w-4 h-4 text-[var(--color-primary)]" />
-              <span>GitHub</span>
+              <span>{t("modal.github")}</span>
             </a>
           )}
         </div>
       </div>
     </div>
   );
+}
+
+function getCategoryKey(category: string) {
+  const categoryKeys: Record<string, string> = {
+    Frontend: "frontend",
+    Laravel: "laravel",
+    "Full Stack": "fullStack",
+    "JavsScript / Vanilla JS": "vanillaJS",
+  };
+
+  return categoryKeys[category] ?? "all";
 }

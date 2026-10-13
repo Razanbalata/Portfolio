@@ -1,0 +1,251 @@
+{
+  "Navbar": {
+    "home": "Home",
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "education": "Education",
+    "contact": "Contact",
+    "letsTalk": "Let's Talk",
+    "time": "Time",
+    "systemStatus": "System Status",
+    "language": "Language",
+    "location": "Location",
+    "status": "Status",
+    "availableForWork": "Available for Work",
+    "name": "RAZAN",
+    "switchLanguage": "العربية"
+  },
+  "PersonalInfo": {
+    "name": "Razan Balata",
+    "title": "Front-End Developer",
+    "location": "Palestine, Gaza"
+  },
+  "Hero": {
+    "welcome": "WELCOME TO MY WORLD",
+    "greeting": "Hi, I'm",
+    "name": "Razan",
+    "role": "Frontend-focused Full-Stack Developer",
+    "descriptionStart": "I enjoy turning ideas into practical, user-friendly web products. My main focus is building modern interfaces with",
+    "frontendSkills": "React, Next.js, TypeScript, and Tailwind CSS",
+    "descriptionMiddle": "while expanding my backend skills with",
+    "backendSkills": "Laravel & MySQL",
+    "descriptionEnd": "and integrating AI APIs like Gemini & Groq.",
+    "quote": "I believe in what I can learn to do, not just in what I can already do.",
+    "yearsExperience": "Years Experience",
+    "projectsApps": "Projects & Apps",
+    "viewWork": "View My Work",
+    "letsTalk": "Let's Talk",
+    "backendStatus": "Backend Developer @UCAS Incubator",
+    "scroll": "SCROLL"
+  },
+  "Services": {
+    "titleStart": "What I",
+    "titleHighlight": "Create",
+    "description": "Bringing ideas to life through code and creativity.",
+    "aboutMe": "About Me",
+    "items": {
+      "1": {
+        "title": "Frontend Development",
+        "description": "React, Next.js, TypeScript, Tailwind CSS"
+      },
+      "2": {
+        "title": "Full-Stack & Backend",
+        "description": "Laravel, PHP, MySQL, REST APIs, Authentication"
+      },
+      "3": {
+        "title": "UI/UX & Architecture",
+        "description": "Scalable frontend architecture & modern user interfaces"
+      },
+      "4": {
+        "title": "AI Integration",
+        "description": "Gemini & Groq APIs, real-time features & smart web apps"
+      }
+    }
+  },
+  "About": {
+    "titleStart": "About",
+    "titleHighlight": "Me",
+    "subtitle": "Frontend-focused Full-Stack Developer. I build things that ship.",
+    "biography": "Biography",
+    "paragraph1Start": "I’m Razan, a Frontend-focused Full-Stack Developer who enjoys turning ideas into practical, user-friendly web products. My main focus is building modern interfaces with",
+    "frontendSkills": "React, Next.js, TypeScript, and Tailwind CSS",
+    "paragraph1End": "with a strong interest in UI/UX and scalable frontend architecture.",
+    "paragraph2Start": "I’m also expanding my backend skills with",
+    "backendSkills": "Laravel, PHP, MySQL, REST APIs",
+    "paragraph2Middle": "authentication, and real-time features. Recently, I’ve been exploring AI integration in web applications using tools and APIs such as Gemini and Groq.",
+    "paragraph3": "I learn best by building real products, solving real problems, and sharing what I discover along the way. Currently looking for opportunities where I can contribute, grow technically, and work on products that solve real problems."
+  },
+  "Skills": {
+    "titleStart": "My",
+    "titleHighlight": "Skills",
+    "subtitle": "Technologies and domains I work in - structured for real-world products.",
+    "categories": {
+      "frontend": {
+        "title": "Frontend Development",
+        "description": "Building responsive, high-performance web apps with modern React and Next.js. Animations, clean state management, and pixel perfection matter to me."
+      },
+      "backend": {
+        "title": "Backend & Database",
+        "description": "Building dynamic web applications with Laravel and PHP, designing relational databases, implementing secure authentication and authorization, and integrating APIs and AI-powered features."
+      },
+      "architecture": {
+        "title": "UI/UX & Architecture",
+        "description": "Translating complex Figma prototypes into modular, reusable components with responsive mobile-first structures and clean code practices."
+      },
+      "ai-realtime": {
+        "title": "AI Integration",
+        "description": "Integrating cutting-edge LLMs and AI services to automate features, generate dynamic content, and add smart interactive features into web apps."
+      }
+    }
+  },
+  "Experience": {
+    "titleStart": "Work",
+    "titleHighlight": "Experience",
+    "subtitle": "My professional journey and the companies I've trained with.",
+    "highlightsTitle": "Key Highlights",
+    "close": "Close modal",
+    "viewDetails": "View details for {role}",
+    "items": {
+      "ucasti": {
+        "role": "Backend Developer Trainee",
+        "description": "Participate in project-based training focused on PHP, Laravel, backend development, REST APIs, and scalable application architecture.",
+        "highlights": {
+          "0": "Participate in project-based training focused on PHP, Laravel, backend development, REST APIs, and scalable application architecture.",
+          "1": "Develop backend features involving database design, REST API integration, authentication, business logic, and secure coding practices.",
+          "2": "Integrate AI-powered tools and intelligent APIs while applying clean architecture principles and Git workflows to build maintainable backend solutions."
+        }
+      },
+      "atyaf": {
+        "role": "Front-End Developer Trainee",
+        "description": "Developed responsive and user-friendly web applications using React.js, Next.js, TypeScript, HTML5, CSS3, and Tailwind CSS.",
+        "highlights": {
+          "0": "Developed responsive and user-friendly web applications using React.js, Next.js, TypeScript, HTML5, CSS3, and Tailwind CSS.",
+          "1": "Applied Next.js App Router, CSS Modules, React state management, and API data fetching practices in real-world frontend projects.",
+          "2": "Collaborated on improving UI implementation, code quality, and development workflows through Git-based collaboration and code reviews."
+        }
+      },
+      "gaza-sky-geeks": {
+        "role": "Front-End Developer Trainee",
+        "description": "Developed clean, responsive, and user-friendly web applications using modern frontend technologies.",
+        "highlights": {
+          "0": "Developed clean, responsive, and user-friendly web applications using modern frontend technologies.",
+          "1": "Built and optimized web applications, including e-commerce platforms and interactive job portals.",
+          "2": "Applied component-based development, responsive design, and API integration practices.",
+          "3": "Collaborated in a professional training environment to improve software quality."
+        }
+      }
+    }
+  },
+  "Projects": {
+    "titleStart": "Featured",
+    "titleHighlight": "Projects",
+    "subtitle": "Showcasing my best work, real-world applications, and full-stack solutions.",
+    "featuredLabel": "Featured Work",
+    "viewDetails": "View Details",
+    "liveDemo": "Live Demo",
+    "github": "GitHub",
+    "categories": {
+      "all": "All",
+      "frontend": "Frontend",
+      "laravel": "Laravel",
+      "fullStack": "Full Stack",
+      "vanillaJS": "JavaScript / Vanilla JS"
+    },
+    "items": {
+      "1": {
+        "description": "A social publishing platform built with Laravel that allows users to write and publish articles, interact through comments and reactions, bookmark posts, follow authors, and get AI-powered writing suggestions."
+      },
+      "2": {
+        "description": "A multi-tenant pharmacy management platform built with Laravel, featuring inventory management, point of sale, purchasing, reports, role-based access control, and an AI advisor powered by Groq."
+      },
+      "3": {
+        "description": "An AI-powered platform that recommends outfits based on user preferences and body type."
+      },
+      "4": {
+        "description": "A full-stack web application that uses AI to generate and schedule social media content, suggest posting times, and manage content scheduling across multiple platforms."
+      },
+      "5": {
+        "description": "An e-commerce web application where users can browse products, add items to their cart, complete purchases, write reviews, and use authentication features, alongside an admin dashboard for inventory and order management."
+      },
+      "6": {
+        "description": "A job portal where users can search and apply for jobs, with authentication, job listings, and an admin dashboard for managing job postings and applications."
+      },
+      "7": {
+        "description": "A weather application that displays current conditions and forecasts using a weather API, with information presented in a clear and user-friendly interface."
+      },
+      "8": {
+        "description": "A task management application that helps users organize tasks with categories, due dates, and completion tracking."
+      },
+      "9": {
+        "description": "A social media web application where users can create posts, comment, view other users' posts, and interact with data through API integration."
+      },
+      "10": {
+        "description": "A full-stack restaurant ordering application where customers can browse menus and place orders, while staff can manage orders, update menu items, and track sales."
+      },
+      "11": {
+        "description": "A recipe discovery application that lets users search for recipes based on available ingredients and dietary preferences."
+      }
+    }
+  },
+  "modal": {
+    "close": "Close modal",
+    "previousImage": "Previous image",
+    "nextImage": "Next image",
+    "visitWebsite": "Visit Website",
+    "github": "View on GitHub"
+  },
+  "Education": {
+    "titleHighlight": "Education",
+    "titleRest": "& Certifications",
+    "subtitle": "My academic background and professional training journey.",
+    "items": {
+      "swe": {
+        "title": "Software Engineering Student",
+        "institution": "University Studies",
+        "description": "Specializing in Frontend & Full-Stack Development, Object-Oriented Design, and Software Architecture."
+      },
+      "gsg-cert": {
+        "title": "Frontend Development Training",
+        "institution": "Gaza Sky Geeks",
+        "description": "Intensive training program covering modern web development, React.js, and real-world project workflows."
+      },
+      "backend-cert": {
+        "title": "Backend Development Training",
+        "institution": "UCAS Technology Incubator",
+        "description": "Project-based training focusing on PHP, Laravel, RESTful APIs, MySQL, and AI integration."
+      },
+      "cert-appreciation": {
+        "title": "Certificates & Training Achievements",
+        "institution": "Various Platforms & Bootcamps",
+        "description": "Continuous learning in Web Architecture, UI/UX, and AI integrations."
+      }
+    }
+  },
+  "Contact": {
+    "titleStart": "Get in",
+    "titleHighlight": "Touch",
+    "subtitle": "Let’s connect — reach out through any of these platforms."
+  },
+  "ContactForm": {
+    "titleStart": "Let's",
+    "titleHighlight": "Talk",
+    "subtitle": "Happy to connect and share thoughts. I respond within 24 hours.",
+    "fields": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "message": "Your Message"
+    },
+    "send": "Send Message",
+    "responseNote": "I read every message and reply within 24 hours.",
+    "success": "Message sent successfully! I'll get back to you soon.",
+    "errors": {
+      "required": "Please fill in all fields.",
+      "invalidEmail": "Please enter a valid email address.",
+      "generic": "Something went wrong. Please try again."
+    },
+    "socialNote": "Prefer social media? Check out my",
+    "contactLink": "contact page",
+    "socialNoteEnd": "for more options."
+  }
+}
