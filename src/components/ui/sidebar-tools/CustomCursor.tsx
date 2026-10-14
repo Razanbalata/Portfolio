@@ -1,45 +1,80 @@
 "use client";
 
-import useClickOutside from "@/src/hooks/useClickOutside";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+
+type CursorStyle = "ring" | "dot" | "crosshair" | "blade" | "glitch";
 
 export default function CustomCursor() {
-  const [position, setPosition] = useState({ x: -100, y: -100 });
-  const [cursorStyle, setCursorStyle] = useState<string>("ring");
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const [cursorStyle, setCursorStyle] = useState<CursorStyle>("ring");
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
+    const cursor = cursorRef.current;
+    if (!cursor) return;
+
+    const validStyles: CursorStyle[] = [
+      "ring",
+      "dot",
+      "crosshair",
+      "blade",
+      "glitch",
+    ];
+
     const updateCursorSettings = () => {
-      const saved = localStorage.getItem("portfolio-cursor-style") || "ring";
-      setCursorStyle(saved);
+      const saved = localStorage.getItem("portfolio-cursor-style");
+
+      if (saved && validStyles.includes(saved as CursorStyle)) {
+        setCursorStyle(saved as CursorStyle);
+      }
     };
 
     updateCursorSettings();
+
     window.addEventListener("storage", updateCursorSettings);
     window.addEventListener("cursor-updated", updateCursorSettings);
 
+    let mouseX = -100;
+    let mouseY = -100;
+    let animationFrame = 0;
+
     const handleMouseMove = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+      mouseX = e.clientX;
+      mouseY = e.clientY;
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    const animateCursor = () => {
+      if (cursor) {
+        cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+      }
+
+      animationFrame = requestAnimationFrame(animateCursor);
+    };
 
     const handleMouseOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (
-        target.tagName === "BUTTON" ||
-        target.tagName === "A" ||
-        target.closest("button") ||
-        target.closest("a")
-      ) {
-        setIsHovered(true);
-      } else {
-        setIsHovered(false);
-      }
+      const target = e.target;
+
+      if (!(target instanceof Element)) return;
+
+      const hovered = !!target.closest(
+        "button, a, input, textarea, select, [role='button']"
+      );
+
+      setIsHovered((previous) =>
+        previous === hovered ? previous : hovered
+      );
     };
+
+    window.addEventListener("mousemove", handleMouseMove, {
+      passive: true,
+    });
     window.addEventListener("mouseover", handleMouseOver);
 
+    animationFrame = requestAnimationFrame(animateCursor);
+
     return () => {
+      cancelAnimationFrame(animationFrame);
+
       window.removeEventListener("storage", updateCursorSettings);
       window.removeEventListener("cursor-updated", updateCursorSettings);
       window.removeEventListener("mousemove", handleMouseMove);
@@ -47,14 +82,13 @@ export default function CustomCursor() {
     };
   }, []);
 
-  // دالة لعرض الشكل المناسب حسب النمط المختل (تضمن ظهور كل الأنماط فوراً وبدون استثناء)
   const renderCursorContent = () => {
     switch (cursorStyle) {
       case "dot":
         return (
-          /* تم تكبير حجم Dot وتوهجها لتكون واضحة ومميزة */
           <div className="w-5 h-5 rounded-full bg-[var(--color-primary)] shadow-[0_0_15px_var(--color-primary)]" />
         );
+
       case "crosshair":
         return (
           <div className="relative w-6 h-6 flex items-center justify-center">
@@ -62,14 +96,17 @@ export default function CustomCursor() {
             <div className="absolute h-full w-[2px] bg-[var(--color-primary)] shadow-[0_0_10px_var(--color-primary)]" />
           </div>
         );
+
       case "blade":
         return (
           <div className="w-3.5 h-7 bg-[var(--color-primary)] rotate-45 shadow-[0_0_12px_var(--color-primary)] rounded-sm" />
         );
+
       case "glitch":
         return (
           <div className="w-6 h-6 border-2 border-dashed border-[var(--color-primary)] rotate-45 shadow-[0_0_12px_var(--color-primary)] animate-spin" />
         );
+
       case "ring":
       default:
         return (
@@ -80,16 +117,19 @@ export default function CustomCursor() {
 
   return (
     <div
-      className={`fixed pointer-events-none z-50 transition-transform duration-75 ease-out ${
-        isHovered ? "scale-125" : "scale-100"
-      }`}
+      ref={cursorRef}
+      className="fixed top-0 left-0 pointer-events-none z-[99999] will-change-transform"
       style={{
-        left: `${position.x}px`,
-        top: `${position.y}px`,
-        transform: "translate(-50%, -50%)",
+        transform: "translate3d(-100px, -100px, 0)",
       }}
     >
-      {renderCursorContent()}
+      <div
+        className={`transition-transform duration-150 ease-out ${
+          isHovered ? "scale-125" : "scale-100"
+        }`}
+      >
+        {renderCursorContent()}
+      </div>
     </div>
   );
 }

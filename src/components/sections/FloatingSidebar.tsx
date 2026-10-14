@@ -28,14 +28,14 @@ export default function FloatingSidebar() {
         قمنا بإضافة كلاسات في الـ CSS العام للتحكم، 
         أو سنعزل زر الفوكس بطريقة تجعله الأداة الوحيدة البارزة 
       */}
-      <aside className="hidden lg:flex fixed right-6 top-1/2 -translate-y-1/2 z-[90] flex-col items-center gap-6">
+      <aside className="flex fixed right-2 sm:right-4 lg:right-6 top-1/2 -translate-y-1/2 z-[90] flex-col items-center gap-3 sm:gap-4 lg:gap-6">
         {/* يظل ظاهراً دائماً */}
         <div className="focus-button-wrapper relative z-[100]">
           <FocusButton />
         </div>
 
         {/* تختفي كل هذه الأدوات */}
-        <div className="sidebar-elements flex flex-col items-center gap-6 transition-all duration-300">
+        <div className="sidebar-elements flex flex-col items-center gap-3 sm:gap-4 lg:gap-6 transition-all duration-300">
           <StatusButton />
           <MusicPlayerButton />
           <EffectsButton onOpenDrawModal={() => setIsDrawModalOpen(true)} />
@@ -47,7 +47,7 @@ export default function FloatingSidebar() {
       </aside>
 
       {/* زر Download CV (سيختفي أيضاً مع باقي العناصر) */}
-      <div className="sidebar-elements hidden lg:flex fixed right-6 bottom-10 z-[90] transition-all duration-300">
+      <div className="sidebar-elements flex fixed right-2 sm:right-4 lg:right-6 bottom-4 sm:bottom-6 lg:bottom-10 z-[90] transition-all duration-300">
         <a
           href={`${PERSONAL_INFO.resume}`}
           download="CV.pdf"

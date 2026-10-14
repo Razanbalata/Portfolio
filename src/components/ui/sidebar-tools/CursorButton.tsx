@@ -88,12 +88,12 @@ export default function CursorButton() {
         className={`siderbar-hover relative flex items-center justify-center w-12 h-12 rounded-full border transition-all duration-300 cursor-pointer shadow-lg backdrop-blur-md ${
           isOpen
             ? "border-[var(--color-primary)] text-[var(--color-primary)] bg-[var(--color-primary)]/15 shadow-[0_0_15px_rgba(16,185,129,0.2)]"
-            : "border-border/50 text-[var(--color-subtext)] hover:text-[var(--color-text)] hover:border-[var(--color-primary)]/60 bg-background/80 hover:bg-background"
+            : "border-border/50 text-[var(--color-subtext)] hover:text-white hover:border-[var(--color-primary)]/60 bg-background/80 hover:bg-background"
         }`}
         title="Cursor Style"
         aria-label="Cursor Style"
       >
-        <div className="w-5 h-5 flex items-center justify-center text-[var(--color-primary)]">
+        <div className="w-5 h-5 flex items-center justify-center text-[var(--color-subtext)] hover:text-white hover:font-bold">
           {CurrentIcon}
         </div>
       </button>

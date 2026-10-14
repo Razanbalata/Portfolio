@@ -24,6 +24,7 @@ body.focus-mode-active .focus-button-wrapper button {
   background-color: var(--color-primary);
   opacity: 0.9; /* أو تحكم بالشفافية ككل للعنصر أو عبر لون مختلف */
   border: 3px solid var(--color-primary);
+  color: #fff;
 }
 
 :root {

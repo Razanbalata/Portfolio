@@ -17,7 +17,7 @@ export default function ThemeToggle() {
       onClick={toggleTheme}
       className="siderbar-hover relative w-12 h-12 flex items-center justify-center rounded-full 
                  bg-background/80 border border-border/50 hover:border-[var(--color-primary)]/60 
-                 hover:bg-background text-[var(--color-subtext)] hover:text-[var(--color-text)]
+                 hover:bg-background text-[var(--color-subtext)] hover:text-white
                  group transition-all duration-300 shadow-lg backdrop-blur-md cursor-pointer overflow-hidden"
       title={theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"}
       aria-label="Toggle Theme Mode"
@@ -28,12 +28,12 @@ export default function ThemeToggle() {
       <div className="relative z-10">
         {theme === "light" ? (
           <Moon
-            className="w-5 h-5 text-[var(--color-text)] group-hover:text-[var(--color-primary)] 
+            className="w-5 h-5 text-[var(--color-subtext)] group-hover:text-white font-bold
                          transition-all duration-500 rotate-0 group-hover:-rotate-12"
           />
         ) : (
           <Sun
-            className="w-5 h-5 text-[var(--color-primary)] 
+            className="w-5 h-5 text-[var(--color-subtext)] group-hover:text-white font-bold
                          transition-all duration-500 rotate-0 group-hover:rotate-90 
                          drop-shadow-[0_0_8px_var(--color-primary)]"
           />
