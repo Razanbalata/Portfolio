@@ -24,7 +24,7 @@
   "Hero": {
     "welcome": "أهلًا بك في عالمي",
     "greeting": "مرحبًا، أنا",
-    "name": "رزان",
+    "name": "رَزان",
     "role": "مطورة واجهات أمامية ومواقع متكاملة",
     "descriptionStart": "بحب أحوّل الأفكار لمنتجات ويب عملية وسهلة الاستخدام. تركيزي الأساسي على بناء واجهات حديثة باستخدام",
     "frontendSkills": "React وNext.js وTypeScript وTailwind CSS",
