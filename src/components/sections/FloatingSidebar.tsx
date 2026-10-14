@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // استيراد أزرار السايدبار الفردية
 import FocusButton from "../ui/sidebar-tools/FocusButton";
@@ -21,7 +21,7 @@ import { PERSONAL_INFO } from "@/src/utils/constants";
 export default function FloatingSidebar() {
   const [isDrawModalOpen, setIsDrawModalOpen] = useState(false);
   const [isThemeModalOpen, setIsThemeModalOpen] = useState(false);
-
+  console.log("Render - isThemeModalOpen:", isThemeModalOpen);
   return (
     <>
       {/* 
@@ -66,7 +66,9 @@ export default function FloatingSidebar() {
 
       <CustomThemeModal
         isOpen={isThemeModalOpen}
-        onClose={() => setIsThemeModalOpen(false)}
+        onClose={() => {
+          setIsThemeModalOpen(false);
+        }}
       />
     </>
   );

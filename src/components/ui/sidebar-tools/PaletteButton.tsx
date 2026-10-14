@@ -2,16 +2,16 @@
 
 import React, { useState, useEffect } from "react";
 import { Palette, Check } from "lucide-react";
+import {
+  DEFAULT_THEMES,
+  getCustomThemes,
+  applyThemeColor,
+  ACTIVE_THEME_KEY,
+  ACTIVE_COLOR_KEY,
+  type ThemeOption,
+} from "@/src/utils/themeManager";
 
-type ThemeOption = "sea" | "forest" | "ember" | "bronze";
-
-interface ThemeConfig {
-  name: ThemeOption;
-  label: string;
-  color: string;
-}
-
-const THEMES: ThemeConfig[] = [
+const THEMES: ThemeOption[] = [
   { name: "sea", label: "Sea", color: "#06b6d4" },
   { name: "forest", label: "Forest", color: "#10b981" },
   { name: "ember", label: "Ember", color: "#f97316" },
@@ -22,44 +22,52 @@ interface PaletteButtonProps {
   onOpenMoreThemes: () => void;
 }
 
-export default function PaletteButton({ onOpenMoreThemes }: PaletteButtonProps) {
+export default function PaletteButton({
+  onOpenMoreThemes,
+}: PaletteButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeTheme, setActiveTheme] = useState<string>("forest");
+  const [activeTheme, setActiveTheme] = useState("forest");
+  const [customThemes, setCustomThemes] = useState<ThemeOption[]>([]);
+  const [activeColor, setActiveColor] = useState("#10b981");
 
- const applyThemeColor = (hexColor: string, themeName: string) => {
-    setActiveTheme(themeName);
-    
-    // تحديث متغيرات الـ CSS الموجودة في ملف الـ CSS لديكِ مباشرة
-    document.documentElement.style.setProperty("--color-primary", hexColor);
-    document.documentElement.style.setProperty("--color-accent", hexColor); // أو إضافة شفافية مثل `${hexColor}aa`
+  useEffect(() => {
+    const savedName = localStorage.getItem(ACTIVE_THEME_KEY);
+    const savedColor = localStorage.getItem(ACTIVE_COLOR_KEY);
 
-    // حفظ اللون في المتصفح
-    localStorage.setItem("portfolio-theme-color", hexColor);
-    localStorage.setItem("portfolio-theme-name", themeName);
-  };
+    setCustomThemes(getCustomThemes());
 
-  // استرجاع اللون المحفوظ عند تحميل الصفحة
-useEffect(() => {
-    const savedColor = localStorage.getItem("portfolio-theme-color");
-    const savedName = localStorage.getItem("portfolio-theme-name");
-    
-    if (savedColor && savedName) {
+    if (savedName) setActiveTheme(savedName);
+    if (savedColor) {
+      setActiveColor(savedColor);
+
       document.documentElement.style.setProperty("--color-primary", savedColor);
-      document.documentElement.style.setProperty("--color-accent", savedColor);
-      setActiveTheme(savedName);
+
+      document.documentElement.style.setProperty(
+        "--color-accent",
+        `${savedColor}40`,
+      );
     }
   }, []);
 
-  const handleSelectTheme = (theme: ThemeConfig) => {
+  const handleSelectTheme = (theme: ThemeOption) => {
     applyThemeColor(theme.color, theme.name);
+    setActiveTheme(theme.name);
+    setActiveColor(theme.color);
     setIsOpen(false);
+  };
+  const handleToggleDropdown = () => {
+    if (!isOpen) {
+      setCustomThemes(getCustomThemes());
+    }
+
+    setIsOpen(!isOpen);
   };
 
   return (
     <div className="relative">
       {/* زر الأيقونة في السايدبار */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleToggleDropdown}
         className={`siderbar-hover relative flex items-center justify-center w-12 h-12 rounded-full border transition-all duration-300 cursor-pointer shadow-lg backdrop-blur-md ${
           isOpen
             ? "border-[var(--color-primary)] text-[var(--color-primary)] bg-[var(--color-primary)]/15 shadow-[0_0_15px_rgba(16,185,129,0.2)]"
@@ -97,7 +105,7 @@ useEffect(() => {
           </div>
           <div className="space-y-1">
             {THEMES.slice(0, 3).map((theme) => {
-              const isSelected = activeTheme === theme.name;
+              const isSelected = activeTheme === theme.name || activeColor?.toLocaleLowerCase()=== theme.color.toLocaleLowerCase();
               return (
                 <button
                   key={theme.name}
@@ -124,7 +132,48 @@ useEffect(() => {
           </div>
 
           <div className="h-px bg-[var(--color-accent)]/30 my-1.5 mx-1" />
+          {customThemes.length > 0 && (
+            <>
+              <div className="h-px bg-[var(--color-accent)]/30 my-1.5 mx-1" />
 
+              <div className="px-3 py-1.5 text-[11px] font-bold text-[var(--color-subtext)] tracking-wider">
+                My Custom Themes
+              </div>
+
+              <div className="space-y-1">
+                {customThemes.map((theme) => {
+                  const isSelected = activeTheme === theme.name;
+
+                  return (
+                    <button
+                      key={theme.name}
+                      onClick={() => handleSelectTheme(theme)}
+                      className={`w-full flex items-center justify-between p-2.5 rounded-xl transition-all text-left cursor-pointer ${
+                        isSelected
+                          ? "bg-[var(--color-primary)]/10 text-[var(--color-text)]"
+                          : "hover:bg-[var(--color-accent)]/20 text-[var(--color-subtext)]"
+                      }`}
+                    >
+                      <div className="flex items-center gap-3 min-w-0">
+                        <span
+                          className="w-3.5 h-3.5 rounded-full shrink-0 shadow-sm"
+                          style={{ backgroundColor: theme.color }}
+                        />
+
+                        <span className="text-sm font-semibold truncate">
+                          {theme.label}
+                        </span>
+                      </div>
+
+                      {isSelected && (
+                        <Check className="w-4 h-4 shrink-0 text-[var(--color-primary)]" />
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            </>
+          )}
           {/* More Themes Button */}
           <button
             onClick={() => {

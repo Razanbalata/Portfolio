@@ -27,27 +27,15 @@ export default function Home() {
       setStep("main");
     }
   }, []);
-  
-return (
-  <>
-    {step === "welcome" && (
-      <IntroWelcome
-        onEnter={() => {
-          sessionStorage.setItem("portfolio-entered", "true");
-          setStep("loading");
-        }}
-      />
-    )}
 
-    {step === "loading" && (
-      <IntroLoader onComplete={() => setStep("main")} />
-    )}
-
-    {step === "main" && (
-      <div className="min-h-screen bg-[var(--color-bg)] animate-fadeIn">
+  return (
+    <>
+      {/* Main content: rendered from the initial page load */}
+      <div className="min-h-screen bg-[var(--color-bg)]">
         <ScrollProgressBar />
         <Navbar />
-        <main>
+
+        <main id="main-content">
           <Hero />
           <MarqueeText />
           <Services />
@@ -60,8 +48,19 @@ return (
           <Contact />
         </main>
       </div>
-    )}
-  </>
-);
 
+      {/* Welcome screen stays as a visual overlay */}
+      {step === "welcome" && (
+        <IntroWelcome
+          onEnter={() => {
+            sessionStorage.setItem("portfolio-entered", "true");
+            setStep("loading");
+          }}
+        />
+      )}
+
+      {/* Loading animation stays unchanged */}
+      {step === "loading" && <IntroLoader onComplete={() => setStep("main")} />}
+    </>
+  );
 }

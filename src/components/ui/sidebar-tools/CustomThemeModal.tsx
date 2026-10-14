@@ -1,15 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
-import { X, Plus } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { X, Plus, Check } from "lucide-react";
 import { COLOR_PALETTE } from "@/src/utils/constants";
-
+import {
+  saveCustomTheme,
+  applyThemeColor,
+  getCustomThemes,
+  ThemeOption,
+} from "@/src/utils/themeManager";
 interface CustomThemeModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
-
-
 
 export default function CustomThemeModal({
   isOpen,
@@ -17,35 +20,66 @@ export default function CustomThemeModal({
 }: CustomThemeModalProps) {
   const [hexInput, setHexInput] = useState("");
   const [selectedColor, setSelectedColor] = useState("#10b981");
+  const [customThemes, setCustomThemes] = useState<ThemeOption[]>([]);
+  useEffect(() => {
+    if (isOpen) {
+      const savedColor = localStorage.getItem("portfolio-theme-color");
 
+      if (savedColor) {
+        setSelectedColor(savedColor.toLowerCase());
+      }
+
+      setCustomThemes(getCustomThemes());
+    }
+  }, [isOpen])
+  
   if (!isOpen) return null;
 
   // دالة تطبيق اللون فورياً في الصفحة وتخزينه
   const applyCustomColor = (hex: string, name = "Custom") => {
-    setSelectedColor(hex);
-    localStorage.setItem("portfolio-theme-color", hex);
-    localStorage.setItem("portfolio-theme-name", name);
+    const normalizedHex = hex.toLowerCase();
 
-    document.documentElement.style.setProperty("--color-primary", hex);
-    document.documentElement.style.setProperty("--color-accent", `${hex}40`);
+    const existingTheme = customThemes.find(
+      (theme) => theme.color.toLowerCase() === normalizedHex,
+    );
+
+    const theme: ThemeOption = existingTheme ?? {
+      name: `custom-${normalizedHex.slice(1)}`,
+      label: name,
+      color: normalizedHex,
+      isCustom: true,
+    };
+
+    const updatedThemes = saveCustomTheme(theme);
+
+    setCustomThemes(updatedThemes);
+    setSelectedColor(normalizedHex);
+
+    applyThemeColor(normalizedHex, theme.name);
   };
 
   const handleApplyHexInput = () => {
     let formattedHex = hexInput.trim();
+
     if (!formattedHex.startsWith("#")) {
       formattedHex = `#${formattedHex}`;
     }
-    // التأكد من أن الكود المكتوب هو Hex صحيح مكون من 6 خانات
+
     if (/^#[0-9A-F]{6}$/i.test(formattedHex)) {
-      applyCustomColor(formattedHex, "Custom Code");
+      applyCustomColor(formattedHex, "Custom");
       onClose();
     }
   };
 
   return (
-    <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in">
-      <div className="relative w-full max-w-3xl h-auto bg-[var(--color-secondary)]/95 backdrop-blur-2xl border border-[var(--color-accent)]/50 rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
-        
+    <div
+      className="fixed inset-0 z-[40] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in"
+      onClick={onClose}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-3xl h-auto bg-[var(--color-secondary)]/95 backdrop-blur-2xl border border-[var(--color-accent)]/50 rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300"
+      >
         {/* Header */}
         <div className="p-6 pb-4 flex items-start justify-between">
           <div>
@@ -57,17 +91,19 @@ export default function CustomThemeModal({
             </p>
           </div>
           <button
-            onClick={onClose}
+            onClick={() => {
+              console.log("Close clicked");
+              onClose();
+            }}
             className="p-1.5 rounded-full text-[var(--color-subtext)] hover:text-[var(--color-text)] hover:bg-[var(--color-accent)]/30 transition-all cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
-        <hr className="my-1 opacity-8"/>
+        <hr className="my-1 opacity-8" />
 
         {/* Content */}
         <div className="p-6 pt-2 space-y-6 max-h-[70vh] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-[var(--color-accent)]/60 scrollbar-track-transparent">
-          
           {/* Hex Input Section */}
           <div className="space-y-2">
             <label className="text-xs font-semibold text-[var(--color-text)]">
@@ -93,16 +129,32 @@ export default function CustomThemeModal({
 
           {/* Color Grid Section (4 أعمدة على الشاشات المتوسطة والكبيرة) */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {COLOR_PALETTE.map((color) => {
-              const isSelected = selectedColor === color.hex;
+            {[
+              ...COLOR_PALETTE,
+              ...customThemes
+                .filter(
+                  (custom) =>
+                    !COLOR_PALETTE.some(
+                      (color) =>
+                        color.hex.toLowerCase() === custom.color.toLowerCase(),
+                    ),
+                )
+                .map((theme) => ({
+                  name: theme.label,
+                  hex: theme.color,
+                })),
+            ].map((color) => {
+              const isSelected =
+                selectedColor.toLowerCase() === color.hex.toLowerCase();
+
               return (
                 <button
-                  key={color.name}
+                  key={`${color.hex}-${color.name}`}
                   onClick={() => {
                     applyCustomColor(color.hex, color.name);
                     onClose();
                   }}
-                  className={`flex items-center gap-3 p-5 rounded-xl border transition-all cursor-pointer ${
+                  className={`flex items-center gap-3 p-4 rounded-xl border transition-all cursor-pointer ${
                     isSelected
                       ? "bg-[var(--color-primary)]/15 border-[var(--color-primary)]"
                       : "bg-[var(--color-bg)]/60 border-[var(--color-accent)]/30 hover:border-[var(--color-primary)]/50"
@@ -112,14 +164,20 @@ export default function CustomThemeModal({
                     className="w-7 h-7 rounded-full shrink-0 shadow-sm"
                     style={{ backgroundColor: color.hex }}
                   />
-                  <span className="text-md font-semibold text-[var(--color-text)] truncate">
-                    {color.name}
-                  </span>
+
+                  <div className="flex items-center gap-2 min-w-0">
+                    <span className="text-sm font-semibold text-[var(--color-text)] truncate">
+                      {color.name}
+                    </span>
+
+                    {isSelected && (
+                      <Check className="w-4 h-4 shrink-0 text-[var(--color-primary)]" />
+                    )}
+                  </div>
                 </button>
               );
             })}
           </div>
-
         </div>
       </div>
     </div>

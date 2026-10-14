@@ -1,146 +1,110 @@
-# Portfolio Project
+# Razan Balata | Portfolio
 
-A modern, responsive personal portfolio website built with Next.js, TypeScript, and Tailwind CSS. This project showcases professional skills, projects, services, and contact information with smooth animations and a clean design.
+A personal, interactive portfolio website showcasing **Razan Balata's** profile, experience, skills, and projects. Built with Next.js, React, and TypeScript, it supports both English and Arabic and offers a customizable browsing experience.
 
-## 🚀 Features
+## ✨ Features
 
-- **Responsive Design**: Optimized for all devices and screen sizes
-- **Dark/Light Theme Toggle**: Seamless theme switching with persistent user preference
-- **Smooth Animations**: Custom animations including fade-in, scroll reveal, and typing effects
-- **Interactive Sections**: Hero, About, Skills, Projects, Services, and Contact sections
-- **Performance Optimized**: Built with Next.js for fast loading and SEO
-- **TypeScript Support**: Fully typed for better development experience
-- **Modern UI Components**: Clean, accessible components with Tailwind CSS
+- **English and Arabic:** Switch between `/en` and `/ar`, with right-to-left layout support for Arabic.
+- **Interactive introduction:** A welcome screen and animated transition before entering the portfolio.
+- **Complete portfolio sections:** Home, About, Services, Skills, Experience, Projects, Education, and Contact.
+- **Project showcase:** Browse projects, their technologies, and available live demos and source code.
+- **Personalized browsing experience:** Light and dark themes, customizable colors, background effects, a custom cursor, focus mode, and a music player.
+- **Motion and visual details:** Scroll reveal animations, a scroll progress bar, and animated text.
+- **Contact and resume:** A contact form for sending messages by email and a link to download the resume.
+- **Responsive design:** An interface that adapts to different screen sizes.
 
-## 🛠️ Tech Stack
+## 🧰 Tech Stack
 
-- **Framework**: Next.js 14+ with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS with PostCSS
-- **Animations**: Custom React hooks and CSS animations
-- **Icons**: Lucide React icons
-- **Linting**: ESLint with custom configuration
-- **Build Tool**: Next.js built-in build system
+| Area | Technology |
+| --- | --- |
+| Framework | [Next.js 16](https://nextjs.org/) |
+| UI library | [React 19](https://react.dev/) |
+| Language | [TypeScript](https://www.typescriptlang.org/) |
+| Styling | [Tailwind CSS 4](https://tailwindcss.com/) |
+| Internationalization and routing | [next-intl](https://next-intl.dev/) |
+| Animations | [Framer Motion](https://www.framer.com/motion/) |
+| Icons | [Lucide React](https://lucide.dev/) and [React Icons](https://react-icons.github.io/react-icons/) |
+| Email delivery | [Nodemailer](https://nodemailer.com/) |
 
-## 📁 Project Structure
-
-```
-portfolio-project/
-├── public/
-│   └── assets/          # Static assets (images, icons, etc.)
-├── src/
-│   ├── app/             # Next.js app directory
-│   │   ├── globals.css  # Global styles
-│   │   ├── layout.tsx   # Root layout
-│   │   └── page.tsx     # Home page
-│   ├── components/      # Reusable React components
-│   │   ├── animations/  # Animation components
-│   │   ├── backgrounds/ # Background components
-│   │   ├── layout/      # Layout components (Navbar, Footer)
-│   │   ├── sections/    # Page sections (Hero, About, etc.)
-│   │   └── ui/          # UI components (Card, Toggle, etc.)
-│   ├── data/            # Static data files
-│   ├── hooks/           # Custom React hooks
-│   └── utils/           # Utility functions and providers
-├── eslint.config.mjs    # ESLint configuration
-├── next.config.ts       # Next.js configuration
-├── package.json         # Dependencies and scripts
-├── postcss.config.mjs   # PostCSS configuration
-├── tailwind.config.js   # Tailwind CSS configuration
-└── tsconfig.json        # TypeScript configuration
-```
-
-## 🏃‍♂️ Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js 18.x or later
-- npm, yarn, pnpm, or bun
+- Node.js 20.9 or later.
+- npm.
 
-### Installation
+### Installation and development
 
-1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/portfolio-project.git
-cd portfolio-project
-```
-
-2. Install dependencies:
-```bash
+git clone https://github.com/Razanbalata/Portfolio.git
+cd Portfolio
 npm install
-# or
-yarn install
-# or
-pnpm install
-# or
-bun install
-```
-
-3. Run the development server:
-```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser to view the portfolio.
+Open [http://localhost:3000](http://localhost:3000) in your browser. Visit `/en` for English or `/ar` for Arabic.
 
-## 📝 Customization
+### Available scripts
 
-### Personal Information
-Update the following files to customize the portfolio with your information:
-
-- `src/data/project.ts` - Add your projects
-- `src/data/services.ts` - Add your services
-- `src/components/sections/Hero.tsx` - Update hero section content
-- `src/components/sections/About.tsx` - Update about section
-- `src/components/sections/Skills.tsx` - Update skills
-- `src/components/sections/Contact.tsx` - Update contact information
-
-### Styling
-- Modify `src/app/globals.css` for global styles
-- Update Tailwind configuration in `tailwind.config.js`
-- Customize theme colors in `src/utils/ThemeProvider.tsx`
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-1. Push your code to GitHub
-2. Connect your repository to [Vercel](https://vercel.com)
-3. Deploy automatically on every push
-
-### Other Platforms
-The project can be deployed to any platform supporting Next.js:
-- Netlify
-- Railway
-- Render
-- AWS Amplify
-
-Build the project:
 ```bash
-npm run build
+npm run dev    # Start the development server
+npm run build  # Create a production build
+npm run start  # Run the production build
 ```
 
-## 🤝 Contributing
+## ✉️ Contact Form Configuration
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes: `git commit -m 'Add amazing feature'`
-4. Push to the branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
+The contact API uses Nodemailer with Gmail credentials. Create a `.env.local` file in the project root and add:
+
+```env
+EMAIL_USER=your_email@gmail.com
+EMAIL_PASS=your_google_app_password
+```
+
+Use a **Google App Password** instead of your regular account password. Keep these values private and never commit `.env.local` to Git. Restart the development server after adding the variables, and configure the same environment variables in your hosting provider before deploying.
+
+## 🗂️ Project Structure
+
+```text
+src/
+├── app/
+│   ├── [locale]/        # Localized pages and layout
+│   └── api/contact/     # Contact message API
+├── components/
+│   ├── animations/      # Animation components
+│   ├── intro/           # Welcome and introduction screens
+│   ├── sections/        # Portfolio page sections
+│   └── ui/              # UI components and customization tools
+├── data/                # Project, experience, skills, and services data
+├── i18n/                # Internationalization and routing configuration
+├── hooks/               # Custom React hooks
+└── utils/               # Site configuration and shared information
+messages/                # English and Arabic translations
+public/assets/           # Project images and static assets
+```
+
+## 🎨 Customizing Content
+
+- **Personal information, social links, and resume:** `src/utils/constants.ts`.
+- **Projects:** `src/data/project.ts`.
+- **Services, skills, experience, and education:** The corresponding files in `src/data/`.
+- **Translations:** `messages/en.json` and `messages/ar.json`.
+- **Global appearance:** `src/app/globals.css` and the customization tools in `src/components/ui/sidebar-tools/`.
+
+When adding new interface text, update both translation files to keep the content available in both languages.
+
+## 🌐 Deployment
+
+The project can be deployed to [Vercel](https://vercel.com/) or any hosting platform that supports Next.js:
+
+1. Connect the GitHub repository to your hosting provider.
+2. Add `EMAIL_USER` and `EMAIL_PASS` to the project's environment variables.
+3. Build the project with `npm run build`, then deploy it.
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
-
-## 📞 Contact
-
-Feel free to reach out if you have any questions or suggestions!
+No license has been specified for this project. Please contact the project owner before reusing its content or assets.
 
 ---
 
-Built with ❤️ using Next.js and TypeScript
+Made with care to bring projects and skills together in one place ✨
