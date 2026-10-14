@@ -1,4 +1,8 @@
 {
+  "Metadata": {
+    "title": "Razan Balata | Frontend Developer",
+    "description": "Razan Balata's portfolio showcasing web development projects, frontend expertise, and experience with React, Next.js, and Laravel."
+  },
   "Navbar": {
     "home": "Home",
     "about": "About",
