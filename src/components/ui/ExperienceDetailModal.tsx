@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -81,8 +80,10 @@ export default function ExperienceDetailModal({
           {t(`${itemKey}.role`)}
         </h2>
 
-        <div className="flex flex-wrap items-center gap-5 text-xs sm:text-sm
-          text-gray-300 font-medium pb-6 border-b border-[#1e293b]">
+        <div
+          className="flex flex-wrap items-center gap-5 text-xs sm:text-sm
+          text-gray-300 font-medium pb-6 border-b border-[#1e293b]"
+        >
           <div className="flex items-center gap-2">
             <Briefcase className="w-4 h-4 text-[var(--color-primary)] shrink-0" />
             <span>{experience.company}</span>
@@ -125,7 +126,8 @@ export default function ExperienceDetailModal({
                       : "opacity-0 translate-y-2"
                   }`}
               >
-                <span className="w-2 h-2 rounded-full
+                <span
+                  className="w-2 h-2 rounded-full
                   bg-[var(--color-primary)]
                   shadow-[0_0_8px_var(--color-primary)]
                   shrink-0 mt-2"

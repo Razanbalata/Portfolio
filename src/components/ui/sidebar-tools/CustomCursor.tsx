@@ -1,5 +1,6 @@
 "use client";
 
+import useClickOutside from "@/src/hooks/useClickOutside";
 import React, { useEffect, useState } from "react";
 
 export default function CustomCursor() {

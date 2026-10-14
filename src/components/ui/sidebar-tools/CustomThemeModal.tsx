@@ -9,6 +9,7 @@ import {
   getCustomThemes,
   ThemeOption,
 } from "@/src/utils/themeManager";
+import useClickOutside from "@/src/hooks/useClickOutside";
 interface CustomThemeModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -31,8 +32,10 @@ export default function CustomThemeModal({
 
       setCustomThemes(getCustomThemes());
     }
-  }, [isOpen])
-  
+  }, [isOpen]);
+
+  const modalRef = useClickOutside<HTMLDivElement>(onClose, isOpen);
+
   if (!isOpen) return null;
 
   // دالة تطبيق اللون فورياً في الصفحة وتخزينه
@@ -73,6 +76,7 @@ export default function CustomThemeModal({
 
   return (
     <div
+      ref={modalRef}
       className="fixed inset-0 z-[40] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in"
       onClick={onClose}
     >

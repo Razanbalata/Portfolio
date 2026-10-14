@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { X, Trash2, Snowflake, Computer, Zap, Check, Plus } from "lucide-react";
+import useClickOutside from "@/src/hooks/useClickOutside";
 
 interface DrawBackgroundModalProps {
   isOpen: boolean;
@@ -35,7 +36,7 @@ export default function DrawBackgroundModal({
 }: DrawBackgroundModalProps) {
   const [brushSize, setBrushSize] = useState(6);
   const [selectedMovement, setSelectedMovement] = useState("fall");
-  
+
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [isDrawing, setIsDrawing] = useState(false);
 
@@ -47,7 +48,10 @@ export default function DrawBackgroundModal({
       canvas.height = canvas.offsetHeight;
       const ctx = canvas.getContext("2d");
       if (ctx) {
-        ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue("--color-primary") || "#06b6d4";
+        ctx.strokeStyle =
+          getComputedStyle(document.documentElement).getPropertyValue(
+            "--color-primary",
+          ) || "#06b6d4";
         ctx.lineWidth = brushSize;
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
@@ -65,7 +69,11 @@ export default function DrawBackgroundModal({
     }
   }, [brushSize]);
 
-  const startDrawing = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
+  const startDrawing = (
+    e:
+      | React.MouseEvent<HTMLCanvasElement>
+      | React.TouchEvent<HTMLCanvasElement>,
+  ) => {
     setIsDrawing(true);
     draw(e);
   };
@@ -79,7 +87,11 @@ export default function DrawBackgroundModal({
     }
   };
 
-  const draw = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
+  const draw = (
+    e:
+      | React.MouseEvent<HTMLCanvasElement>
+      | React.TouchEvent<HTMLCanvasElement>,
+  ) => {
     if (!isDrawing || !canvasRef.current) return;
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -101,7 +113,10 @@ export default function DrawBackgroundModal({
     const y = clientY - rect.top;
 
     // جلب لون الثيم الحالي للرسم به
-    const primaryColor = getComputedStyle(document.documentElement).getPropertyValue("--color-primary") || "#06b6d4";
+    const primaryColor =
+      getComputedStyle(document.documentElement).getPropertyValue(
+        "--color-primary",
+      ) || "#06b6d4";
     ctx.strokeStyle = primaryColor.trim();
 
     ctx.lineTo(x, y);
@@ -121,7 +136,7 @@ export default function DrawBackgroundModal({
 
   const handleApplyCustomBackground = () => {
     if (!canvasRef.current) return;
-    
+
     // تحويل الرسمة إلى صورة (Data URL) وحفظها
     const dataUrl = canvasRef.current.toDataURL();
     localStorage.setItem("portfolio-custom-drawing", dataUrl);
@@ -133,12 +148,16 @@ export default function DrawBackgroundModal({
     onClose();
   };
 
+  const modalRef = useClickOutside<HTMLDivElement>(onClose, isOpen);
+
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in">
-      <div className="relative w-full max-w-2xl bg-[var(--color-secondary)]/95 backdrop-blur-2xl border border-[var(--color-accent)]/50 rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
-        
+    <div className="fixed inset-0 z-[40] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in">
+      <div
+        ref={modalRef}
+        className="relative w-full max-w-2xl bg-[var(--color-secondary)]/95 backdrop-blur-2xl border border-[var(--color-accent)]/50 rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300"
+      >
         {/* Header */}
         <div className="p-6 pb-4 flex items-start justify-between">
           <div>
@@ -159,14 +178,13 @@ export default function DrawBackgroundModal({
 
         {/* Content */}
         <div className="p-6 pt-2 space-y-6 max-h-[70vh] overflow-y-auto pr-4">
-          
           {/* لوحة الرسم Canvas */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <h3 className="text-sm font-semibold text-[var(--color-text)]">
                 Draw your shape
               </h3>
-              <button 
+              <button
                 onClick={clearCanvas}
                 className="flex items-center gap-2 text-xs font-medium text-[var(--color-subtext)] hover:text-red-400 transition-colors cursor-pointer group"
               >
@@ -225,10 +243,18 @@ export default function DrawBackgroundModal({
                         : "bg-[var(--color-bg)]/60 border-[var(--color-accent)]/30 hover:border-[var(--color-primary)]/40"
                     }`}
                   >
-                    <div className={isSelected ? "text-[var(--color-primary)]" : "text-[var(--color-subtext)]"}>
+                    <div
+                      className={
+                        isSelected
+                          ? "text-[var(--color-primary)]"
+                          : "text-[var(--color-subtext)]"
+                      }
+                    >
                       {style.icon}
                     </div>
-                    <span className={`text-sm font-bold mt-2 ${isSelected ? "text-[var(--color-text)]" : "text-[var(--color-subtext)]"}`}>
+                    <span
+                      className={`text-sm font-bold mt-2 ${isSelected ? "text-[var(--color-text)]" : "text-[var(--color-subtext)]"}`}
+                    >
                       {style.label}
                     </span>
                     <p className="text-[10px] text-[var(--color-subtext)]/80 mt-1 leading-tight">
@@ -251,7 +277,6 @@ export default function DrawBackgroundModal({
             <span>Apply as Background</span>
           </button>
         </div>
-
       </div>
     </div>
   );
